@@ -1,4 +1,4 @@
-#Speedscore
+# Speedscore
 
 This repository contains the code for the SpeedScore personal speedfgolf app developed in the book *Full Stack Web Development from the Ground Up* (first edition) by Chris Hundhausen. (c) 2022 Morgan Kaufmann.
 
