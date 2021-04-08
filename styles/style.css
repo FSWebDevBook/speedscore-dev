@@ -1,11 +1,16 @@
 :root {
     --main-color: #13294E;
+    --text-color: white;
+    --item-highlight-color: #f0f0f0; 
 }
+
+/*************************************************************************
+* CSS CLASSES FOR TOP NAVIGATION BAR
+*************************************************************************/
 
 /* Styling of the fixed navbar bar in the app. Its background
    needs to be the app's main color (--main-color).  */
 .navbar {
-    overflow: hidden; /* Don't allow scrolling */
     display: block; /* Occupies its own horizontal space */
     background-color: var(--main-color);
     position: fixed; /* Doesn't move */
@@ -40,7 +45,7 @@
    when over it. 
 */
 .navbar-btn-icon {
-    color: white;
+   color: var(--text-color);
     font-size: 30px;
     text-align: center;
     cursor: pointer;
@@ -55,10 +60,148 @@
     width: 38px;
 }
 /* navbar-title styles the navbar's title text. 
-   It should be a white color in a large font.
+   It should be text color in a large font.
 */
 .navbar-title {
     margin-left: 4px;
-    color: white;
+    color: var(--text-color);
     font-size: 26px;
 }
+
+/*************************************************************************
+* CSS CLASSES FOR BOTTOM "MODE" BAR
+*************************************************************************/
+/* .modebar -- Styling for mode bar at the bottom of the page */
+.modebar {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 200;
+}
+    
+/* .modebar a -- Style the links (buttons) inside the bottom bar */
+.modebar a { 
+    display: block;
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    padding: 2px 2px;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+}
+    
+/* .modebar a:hover -- Toggle to gray background and blue text when it is hovered */
+.modebar a:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color)
+}
+
+/* .modebar-icon -- Style the icons in the bottom bar */
+.modebar-icon {
+    display:block; 
+    padding-top:3px;
+}
+
+/* .modebar-tet -- Style the text in the bottom bar */
+.modebar-text {
+    display:block;
+    font-size: small;
+}
+
+.modebar-selected {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR SIDE MENU
+*************************************************************************/
+/* .sidemenu-btn -- Styling for the button that opens/closes menu */
+.sidemenu-btn {
+    background-color: transparent;
+    border-color: #13294E;
+    text-align: center;
+}
+
+/* .sidemenu-btn-icon -- Styling for side menu button icon  */
+.sidemenu-btn-icon {
+    color: color(--text-color);
+    font-size: 30px;
+    cursor: pointer; /* Indicates button is clickable on hover */
+    text-align: center;
+}
+
+/* .sidmenu-open -- used to set width to 250px when menu is open */
+.sidemenu-open {
+    width: 250px;
+}
+
+/* .sidemenu-closed -- used to set width to 0px when menu is closed */
+.sidemenu-closed {
+    width: 0px;
+}
+
+/* sidemenu -- Styling of the side menu */
+.sidemenu {
+    height: 100%; /* Menu is full height of window */
+    width: 250px; /* Menu initially hidden -- will be opened on click */
+    position: fixed; /* Menu stays in place regardless of other content */
+    z-index: 150; /* Force the menu to be at front */
+    top: 48px; /* Position menu 48 px from top of screen; accomodates top navbar */
+    left: 0; /* Position the menu on the left hand side */
+    background-color: var(--main-color); /* Match to main-color */
+    color: var(--text-color);
+    transition-duration: 0.5s; /* Animation transition time for open/close is 0.5 sec */
+    padding-top: 12px; /* Start menu content 12 px from top */
+  }
+
+/* Style for side menu title */   
+.sidemenu-title {
+    position: absolute;
+    width:100%; /* width is 100% of menu */
+    top: 0px;
+    left: 0px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px !important;
+    border-bottom: 2px solid var(--text-color);
+}
+
+/* sidemenu a -- Styling for menu items, which have <a> tag. */
+.sidemenu a {
+    padding: 16px 8px 16px 32px; /* Pad each menu item */
+    display: block;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+/* sidemenu div -- Styling for the div containing the menu items.
+   It has a top padding of 60px so that it is displayed below the
+   absolutely-positioned sidemenu-title. */
+.sidemenu-items {
+    padding-top: 60px;
+}
+
+/* sidemenu a:hover -- When menu item is hovered over, highlight it 
+   with light gray background and blue text */
+.sidemenu a:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color) !important;
+}
+
+/* sidemenu-profile-icon -- Styling for user profile icon in side menu */
+.sidemenu-profile-icon {
+    height: 50px;
+    width:  50px;
+}
+
+/* Style for current user shown in side menu */
+.sidemenu-userID {
+    padding-left: 4px;
+    font-size: 14px;
+}
+
+
