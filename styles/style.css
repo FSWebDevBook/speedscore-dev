@@ -1,0 +1,73 @@
+/*************************************************************************
+* SPEEDSCORE APP's MAIN STYLESHEET
+*************************************************************************/
+
+:root {
+    --main-color: #13294E;
+    --text-color: white;
+    --item-highlight-color: #f0f0f0; 
+}
+
+/*************************************************************************
+* CSS CLASSES FOR TOP NAVIGATION BAR
+*************************************************************************/
+
+/* Styling of the fixed navbar bar in the app. Its background
+   needs to be the app's main color (--main-color).  */
+.navbar {
+    display: block; /* Occupies its own horizontal space */
+    background-color: var(--main-color);
+    position: fixed; /* Doesn't move */
+    top: 0px; /* 0px from top-left */
+    width: 100%; /* 100% of width of screen */
+    align-content: center;
+    border-radius: 0px;
+    z-index: 100; /* Force it to be on top */
+}
+
+/* navbar-items styles items within navbar. They should be centered top-to-bottom
+   with a small internal margin */
+   .navbar-items {
+    display: flex; 
+    padding-top: 6px; 
+    padding-bottom: 6px;
+    align-items: center;
+  }
+
+/* navbar-btn styles the side menu button in the navbar. Its background 
+   needs to be transparent so that it looks like it's part of the 
+   navbar. Its border color needs to be --main-color so it blends in to
+   the navbar.
+*/
+.navbar-btn {
+    background-color: transparent;
+    border-color: var(--main-color);
+    text-align: center;
+}
+
+/* navbar-btn-icon styles the navbar button icon. It should be white, in a large
+   font, centered within the button, and the cursor should change to a pointer 
+   when over it. 
+*/
+.navbar-btn-icon {
+   color: var(--text-color);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* navbar-app-icon styles the SpeedScore app icon in the navbar. 
+   It should be 38 x 38 pixels, with a small right margin so that 
+   there is space between it and the navbar's title
+*/ 
+.navbar-app-icon {
+    height: 38px;
+    width: 38px;  
+}
+/* navbar-title styles the navbar's title text. 
+   It should be text color in a large font.
+*/
+.navbar-title {
+    margin-left: 4px;
+    color: var(--text-color);
+    font-size: 26px;  
+}

@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Begin HEAD section of document. Here we set up things, define styles 
-         and/or import stylesheets. -->
+    <title>SpeedScore</title>
+    <!-- Define Favicon -->
+    <link rel='shortcut icon' type='image/x-icon' href="images/ssfavicon.ico" />
+    <!-- Import FontAwesome icons -->
+    <script src="https://kit.fontawesome.com/79d46ac19d.js" crossorigin="anonymous"></script>
+    <!-- Import local stylesheet -->
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <!-- Begin HEAD section of document. Here we specify the page content. -->
+    <!-- The TOP NAVIGATION BAR -->
+    <div id="navBar" class="navbar"> 
+      <div class="navbar-items">
+        <button id="menuBtn" class="navbar-btn">
+          <span id="menuBtnIcon" class="navbar-btn-icon fas fa-bars"></span>
+        </button>
+        <img src="images/sslogo.png" class="navbar-app-icon">
+        <span id="topBarTitle" class="navbar-title">Welcome to SpeedScore</span>
+      </div>
+    </div>
   </body>
   <script>
     //Begin SCRIPT section of document. Here we write JavaScript to manipulate the page
