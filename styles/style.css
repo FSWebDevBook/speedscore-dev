@@ -14,7 +14,7 @@
     display: block; /* Occupies its own horizontal space */
     background-color: var(--main-color);
     position: fixed; /* Doesn't move */
-    top: 0;
+    top: 0; /* 0px from top-left */
     width: 100%; /* 100% of width of screen */
     align-content: center;
     border-radius: 0px;
@@ -25,8 +25,9 @@
    with a small internal margin */
    .navbar-items {
     display: flex; 
-    padding-top: 5px; 
-    padding-bottom: 5px;
+    align-content: center;
+    padding-top: 6px; 
+    padding-bottom: 6px;
   }
 
 /* navbar-btn styles the side menu button in the navbar. Its background 
@@ -58,6 +59,7 @@
 .navbar-app-icon {
     height: 38px;
     width: 38px;
+    align-self: center;
 }
 /* navbar-title styles the navbar's title text. 
    It should be text color in a large font.
@@ -85,9 +87,10 @@
 .modebar a { 
     display: block;
     float: left;
-    width: 33.3%;
+    width: 33%;
     text-align: center;
-    padding: 2px 2px;
+    padding: 6px 0px;
+    
     font-size: 17px;
     cursor: pointer;
     text-decoration: none;
