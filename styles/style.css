@@ -71,3 +71,50 @@
     color: var(--text-color);
     font-size: 26px;  
 }
+
+/*************************************************************************
+* CSS CLASSES FOR BOTTOM "MODE" BAR
+*************************************************************************/
+/* .modebar -- Styling for mode bar at the bottom of the page */
+.modebar {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 200;
+    display: flex;
+}
+    
+/* .modebar a -- Style the links (buttons) inside the bottom bar */
+.modebar a { 
+    width: 33%;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.modebar a:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+/* .modebar-icon -- Style the icons in the bottom bar */
+.modebar-icon {
+    display:block;
+    padding-top:3px;
+}
+
+/* .modebar-text -- Style the text in the bottom bar */
+.modebar-text {
+    display:block;
+    font-size: small;
+}
+
+.modebar-selected {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
