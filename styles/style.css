@@ -19,6 +19,7 @@
     background-color: var(--main-color);
     position: fixed; /* Doesn't move */
     top: 0px; /* 0px from top-left */
+    left: 0px; 
     width: 100%; /* 100% of width of screen */
     align-content: center;
     border-radius: 0px;
@@ -29,8 +30,6 @@
    with a small internal margin */
    .navbar-items {
     display: flex; 
-    padding-top: 6px; 
-    padding-bottom: 6px;
     align-items: center;
   }
 
@@ -81,6 +80,7 @@
     background-color: var(--main-color);
     position: fixed;
     bottom: 0px;
+    left: 0px;
     width: 100%;
     z-index: 200;
     display: flex;
@@ -115,6 +115,54 @@
 }
 
 .modebar-selected {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR SIDE MENU
+*************************************************************************/
+
+/* sidemenu -- Styling of the side menu */
+.sidemenu {
+    width: 275px;
+    height: 100%; /* Menu is full height of window */
+    position: fixed; /* Menu stays in place regardless of other content */
+    z-index: 75; /* Force the menu to be near the front */
+    top: 64px; /* Position menu 64 px from top of screen; accomodates top navbar */
+    left: 0px; /* Position side menu on left-hand side of screen */
+    background-color: var(--main-color); /* Match to main-color */
+    color: var(--text-color);
+    transition-duration: 0.3s; /* Animation transition time for open/close is 0.5 sec */
+  }
+
+/* Style for side menu title */   
+.sidemenu-title {
+    border-bottom: 2px solid var(--text-color);
+}
+
+/* sidemenu-profile-pic -- Styling for user profile pic in side menu */
+.sidemenu-profile-pic {
+    height: 25%;
+    width:  25%;
+}
+
+/* Style for current user shown in side menu */
+.sidemenu-userID {
+    padding-left: 4px;
+    font-size: 20px;
+}
+
+/* sidemenu a -- Styling for menu items, which have <a> tag. */
+.sidemenu a {
+    display: block;
+    padding: 16px 8px 16px 32px; /* Pad each menu item */
+    font-size: 18px;
+}
+
+/* sidemenu a:hover -- When menu item is hovered over, highlight it 
+   with light gray background and blue text */
+.sidemenu a:hover {
     background-color: var(--item-highlight-color);
     color: var(--main-color);
 }
