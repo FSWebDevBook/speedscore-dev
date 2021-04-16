@@ -2,7 +2,7 @@
 
 This repository contains the code for the SpeedScore personal speedfgolf app developed in the book *Full Stack Web Development from the Ground Up* (first edition) by Chris Hundhausen. (c) 2022 Morgan Kaufmann.
 
-The code in each chapter is developed in a feature branch with the chapter's name (e.g., 'ch2')
+The code in each chapter is developed in a feature branch named after the chapter (e.g., 'ch2')
 
 Since the book's development of SpeedScore is *cumulative*, each chapter's feature branch is merged into the main branch, so that the main branch contains the final software product that emerges from the book's development activities.
 
