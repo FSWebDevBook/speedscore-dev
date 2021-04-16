@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>SpeedScore</title>
+    <!-- Define Favicon -->
+    <link rel='shortcut icon' type='image/x-icon' href="images/ssfavicon.ico" aria-hidden="true"/>
+     <!-- Import FontAwesome icons -->
     <script src="https://kit.fontawesome.com/79d46ac19d.js" 
     crossorigin="anonymous"></script>
+    <!-- Import local stylesheet -->
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <!-- The TOP NAVIGATION BAR -->
-    <div class="navbar"> 
-      <div class="navbar-items">
-        <button type="button" role="menu" class="navbar-btn">
-          <span class="navbar-btn-icon fas fa-bars"></span>
-        </button>
-        <img src="images/sslogo.png" class="navbar-app-icon">
-        <span class="navbar-title">Welcome to SpeedScore</span>
-      </div>
-    </div>
+<!-- The TOP NAVIGATION BAR -->
+<header class="navbar" aria-label="Top Navigation Bar"> 
+  <div class="navbar-items" aria-hidden="true">
+    <button type="button" class="navbar-btn" aria-haspopup="true" aria-label="Menu Button">
+      <span class="navbar-btn-icon fas fa-bars" aria-hidden="true"></span>
+    </button>
+    <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo">
+    <h1 id="app-title" class="navbar-title">Welcome to SpeedScore</h1>
+  </div>
+</header>
     <script>
       //Begin SCRIPT section of document. Here we write JavaScript to manipulate the page
       //appearance and respond to user input. Notice we can use JavaScript-style comments
