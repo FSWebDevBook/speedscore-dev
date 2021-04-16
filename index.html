@@ -13,46 +13,64 @@
     <!-- The TOP NAVIGATION BAR -->
     <header class="navbar"> 
       <div class="navbar-items">
-        <button id="menuBtn" class="navbar-btn">
-          <span id="menuBtnIcon" class="navbar-btn-icon fas fa-times"></span>
+        <button id="menuBtn" title="Menu button" type="button" role="menu" class="navbar-btn">
+          <span id="sideMenuIcon" class="navbar-btn-icon fas fa-bars"></span>
         </button>
         <img src="images/sslogo.png" alt="SpeedScore Logo" class="navbar-app-icon">
-        <h1 id="topBarTitle" class="navbar-title">Welcome to SpeedScore</h1>
+        <h1 class="navbar-title">Welcome to SpeedScore</h1>
       </div>
     </header>
     <!-- BOTTOM "MODE" BAR -->
-    <nav class="modebar">
-      <a class="modebar-selected"><span class="modebar-icon fa fa-th-list"></span>
-        <span class="modebar-text">Feed</span></a>
-      <a><span class="modebar-icon fa fa-history"></span>
-        <span class="modebar-text">Rounds</span></a>
-      <a><span class="modebar-icon fa fa-flag"></span>
-        <span class="modebar-text">Courses</span></a>
+    <nav aria-label="App Mode Bar" class="modebar">
+      <button type="button" role="menuitem" class="modebar-selected">
+        <span class="modebar-icon fa fa-th-list"></span>
+        <span class="modebar-text">Feed</span></button>
+      <button type="button" role="menuitem" class="modebar-unselected">
+        <span class="modebar-icon fa fa-history"></span>
+        <span class="modebar-text">Rounds</span></button>
+      <button type="button" role="menuitem" class="modebar-unselected">
+        <span class="modebar-icon fa fa-flag"></span>
+        <span class="modebar-text">Courses</span></button>
     </nav>
-<!--THE SIDE MENU -->
-<nav class="sidemenu" >
-  <!--SIDE MENU TITLE -->
-  <section class="sidemenu-title">
-    <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
-      alt="Chris Hundhausen's profile picture">
-    <span class="sidemenu-userID">Chris Hundhausen</span>
-  </section>
-  <!--SIDE MENU ITEMS -->
-  <section>
-    <!--CONTEXTUAL MENU ITEMS -->
-    <a><span class="fa fa-plus"></span>&nbsp;Post to Feed</a>
-    <a><span class="fa fa-users"></span>&nbsp;Manage Followed Users</a>
-    <a><span class="fa fa-plus"></span>&nbsp;Log Round</a>
-    <a><span class="fa fa-plus"></span>&nbsp;Add Course</a>
-    <!--ALWAYS AVAILABLE MENU ITEMS -->
-    <a><span class="fa fa-info-circle"></span>&nbsp;About</a>
-    <a><span class="fa fa-sign-out-alt"></span>&nbsp;Log Out</a>
-  </section>
-</nav>  
+    <!--THE SIDE MENU -->
+    <nav id="sideMenu" aria-label="App Menu" class="sidemenu sidemenu-closed">
+      <!--SIDE MENU TITLE -->
+      <section class="sidemenu-title">
+        <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
+          alt="Chris Hundhausen's profile picture">
+        <span class="sidemenu-userID">Chris Hundhausen</span>
+      </section>
+      <!--SIDE MENU ITEMS -->
+      <section>
+        <!--FEED MODE MENU ITEMS-->
+        <button type="button" role="menuitem"><span class="fa fa-plus">
+          </span>&nbsp;Post to Feed</button>
+        <button type="button" role="menuitem"><span class="fa fa-users">
+          </span>&nbsp;Follow Others</button>
+        <!--ROUNDS MODE MENU ITEMS
+        <button type="button"role="menuitem"><span class="fa fa-plus">
+          </span>&nbsp;Log Round</button> -->
+        <!--COURSES MODE MENU ITEMS
+        <button type="button" role="menuitem"><span class="fa fa-plus">
+          </span>&nbsp;Add Course</button> -->
+        <!--ALWAYS AVAILABLE MENU ITEMS -->
+        <button type="button" role="menuitem"><span class="fa fa-info-circle">
+          </span>&nbsp;About</button>
+        <button type="button" role="menuitem"><span class="fa fa-sign-out-alt">
+          </span>&nbsp;Log Out</button>
+      </section>
+    </nav>
+    <!--FLOATING ACTION BUTTON-->
+    <button role="button" class="float-btn">
+      <span class="float-btn-icon fas fa-plus"></span>
+    </button>
+    <!-- APP CONTENT PAGES -->
+    <!-- FEED MODE MAIN PAGE-->
+    <section class="app-page">
+      <h1 class="app-page-header">Activity Feed</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png">
+    </section>
+    <script src="scripts/main.js"></script>
   </body>
-  <script>
-    //Begin SCRIPT section of document. Here we write JavaScript to manipulate the page
-    //appearance and respond to user input. Notice we can use JavaScript-style comments
-    //instead of HTML (<!--) comments.
-  </script>
 </html>

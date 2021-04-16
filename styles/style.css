@@ -6,6 +6,7 @@
     --main-color: #13294E;
     --text-color: white;
     --item-highlight-color: #f0f0f0; 
+    --side-menu-width: 250px;
 }
 
 /*************************************************************************
@@ -44,6 +45,12 @@
     text-align: center;
 }
 
+/* navbar-btn:focus -- When the button is clicked, suppress the default
+   buttton outline. */
+.navbar-btn:focus {
+    outline: none;
+}
+
 /* navbar-btn-icon styles the navbar button icon. It should be white, in a large
    font, centered within the button, and the cursor should change to a pointer 
    when over it. 
@@ -76,8 +83,6 @@
 *************************************************************************/
 /* .modebar -- Styling for mode bar at the bottom of the page */
 .modebar {
-    color: var(--text-color);
-    background-color: var(--main-color);
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -87,8 +92,10 @@
 }
     
 /* .modebar a -- Style the links (buttons) inside the bottom bar */
-.modebar a { 
-    width: 33%;
+.modebar button { 
+    border: none;
+    
+    width: 33.33%;
     text-align: center;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -97,9 +104,13 @@
     text-decoration: none;
 }
 
-.modebar a:hover {
+.modebar button:hover {
     background-color: var(--item-highlight-color);
     color: var(--main-color);
+}
+
+.modebar button:focus {
+    outline: none;
 }
 
 /* .modebar-icon -- Style the icons in the bottom bar */
@@ -119,13 +130,17 @@
     color: var(--main-color);
 }
 
+.modebar-unselected {
+    background-color: var(--main-color);
+    color: var(--text-color);
+}
+
 /*************************************************************************
 * CSS CLASSES FOR SIDE MENU
 *************************************************************************/
 
 /* sidemenu -- Styling of the side menu */
 .sidemenu {
-    width: 275px;
     height: 100%; /* Menu is full height of window */
     position: fixed; /* Menu stays in place regardless of other content */
     z-index: 75; /* Force the menu to be near the front */
@@ -134,35 +149,126 @@
     background-color: var(--main-color); /* Match to main-color */
     color: var(--text-color);
     transition-duration: 0.3s; /* Animation transition time for open/close is 0.5 sec */
+    overflow: hidden;
   }
+
+/* sidemenu-open -- Display the side menu as open */
+.sidemenu-open {
+    width: var(--side-menu-width);
+}
+
+/* sidemenu-closed -- Display the side menu as closed */
+.sidemenu-closed {
+    width: 0px;
+}
 
 /* Style for side menu title */   
 .sidemenu-title {
     border-bottom: 2px solid var(--text-color);
+    display: flex;
+    align-items: center;
 }
+
+
 
 /* sidemenu-profile-pic -- Styling for user profile pic in side menu */
 .sidemenu-profile-pic {
-    height: 25%;
+    height: auto;
     width:  25%;
 }
 
 /* Style for current user shown in side menu */
 .sidemenu-userID {
+    white-space: nowrap;
+    width: 75%;
     padding-left: 4px;
     font-size: 20px;
 }
 
 /* sidemenu a -- Styling for menu items, which have <a> tag. */
-.sidemenu a {
+.sidemenu button {
+    text-align: left;
+    border: none;
+    background-color: var(--main-color); /* Match to main-color */
+    color: var(--text-color);
+    width: 100%;
+    cursor: pointer;
     display: block;
-    padding: 16px 8px 16px 32px; /* Pad each menu item */
+    margin-left: 0px;
+    padding: 24px 0px 24px 24px; /* top, right, bottom, left */
     font-size: 18px;
 }
 
-/* sidemenu a:hover -- When menu item is hovered over, highlight it 
+/* sidemenu button:hover -- When menu item is hovered over, highlight it 
    with light gray background and blue text */
-.sidemenu a:hover {
+.sidemenu button:hover {
     background-color: var(--item-highlight-color);
     color: var(--main-color);
+}
+
+/* sidemenu button:focus -- When menu item is clicked on to give it focus,
+   suppress the default button outline */
+.sidemenu button:focus {
+    outline: none;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR FLOATING ACTION BUTTON
+*************************************************************************/
+/* Float-btn -- Styling for the floating action button. It appears in the
+   lower right corder of the app as a large circle with a slight shadow. */
+.float-btn {
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:60px;
+    right:40px;
+    background-color: var(--main-color);
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
+/* float-btn:hover -- When menu item is hovered over, highlight it 
+   with light gray background and blue text */
+.float-btn:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+/* float-btn:focus -- When float button is clicked on to give it focus,
+   suppress the default button outline */
+.float-btn:focus {
+    outline: none;
+}
+
+/* float-btn-icon -- Make the button icon 20px and give it text-color */
+.float-btn-icon {
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR APP CONTENT PAGES
+*************************************************************************/
+.app-page {
+    padding-top: 70px;
+}
+
+.app-page-header {
+    text-align: center;
+    font-size: 48px;
+}
+
+.app-page-content {
+    text-align: center;
+    font-size: 24px;
+}
+
+.app-page-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
 }
