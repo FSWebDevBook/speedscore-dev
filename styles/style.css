@@ -216,3 +216,28 @@
 .sidemenu-item-hidden {
     display: none;
 }
+
+/*************************************************************************
+* CSS CLASSES FOR FLOATING ACTION BUTTON
+*************************************************************************/
+/* Float-btn -- Styling for the floating action button. It appears in the
+   lower right corder of the app as a large circle with a slight shadow. */
+   .float-btn {
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:60px;
+        right:40px;
+        color: var(--text-color);
+        background-color: var(--main-color);
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+}
+
+/* float-btn:hover -- When menu item is hovered over, highlight it 
+   with light gray background and blue text */
+.float-btn:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
