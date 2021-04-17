@@ -26,8 +26,6 @@
     align-content: center;
     border-radius: 0px;
     z-index: 100; /* Force it to be on top */
-    padding-top: 6px;
-    padding-bottom: 6px;
 }
 
 /* navbar-items styles items within navbar. They should be centered top-to-bottom
@@ -79,4 +77,60 @@
     margin-left: 4px;
     color: var(--text-color);
     font-size: 26px;  
+}
+
+/*************************************************************************
+* CSS CLASSES FOR BOTTOM "MODE" BAR
+*************************************************************************/
+/* .modebar -- Styling for mode bar at the bottom of the page */
+.modebar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 200;
+    display: flex;
+}
+    
+/* .modebar a -- Style the links (buttons) inside the bottom bar */
+.modebar button { 
+    border: none;
+    width: 33.33%;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 17px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.modebar button:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+.modebar button:focus {
+    outline: none;
+}
+
+/* .modebar-icon -- Style the icons in the bottom bar */
+.modebar-icon {
+    display:block;
+    padding-top:3px;
+}
+
+/* .modebar-text -- Style the text in the bottom bar */
+.modebar-text {
+    display:block;
+    font-size: small;
+}
+
+.modebar-selected {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+.modebar-unselected {
+    background-color: var(--main-color);
+    color: var(--text-color);
 }

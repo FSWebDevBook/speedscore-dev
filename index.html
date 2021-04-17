@@ -11,16 +11,28 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-<!-- The TOP NAVIGATION BAR -->
-<header class="navbar" aria-label="Top Navigation Bar"> 
-  <div class="navbar-items" aria-hidden="true">
-    <button type="button" class="navbar-btn" aria-haspopup="true" aria-label="Menu Button">
-      <span class="navbar-btn-icon fas fa-bars" aria-hidden="true"></span>
-    </button>
-    <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo">
-    <h1 id="app-title" class="navbar-title">Welcome to SpeedScore</h1>
-  </div>
-</header>
+    <!-- The TOP NAVIGATION BAR -->
+    <header class="navbar" aria-label="Top Navigation Bar"> 
+      <div class="navbar-items" aria-hidden="true">
+        <button type="button" class="navbar-btn" aria-haspopup="true" aria-label="Menu Button">
+          <span class="navbar-btn-icon fas fa-bars" aria-hidden="true"></span>
+        </button>
+        <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo">
+        <h1 id="app-title" class="navbar-title">Welcome to SpeedScore</h1>
+      </div>
+    </header>
+    <!-- BOTTOM "MODE" BAR -->
+    <nav class="modebar">
+      <button type="button" class="modebar-selected">
+        <span class="modebar-icon fa fa-th-list"></span>
+        <span class="modebar-text">Feed</span></button>
+      <button type="button" class="modebar-unselected">
+        <span class="modebar-icon fa fa-history"></span>
+        <span class="modebar-text">Rounds</span></button>
+      <button type="button" class="modebar-unselected">
+        <span class="modebar-icon fa fa-flag"></span>
+        <span class="modebar-text">Courses</span></button>
+    </nav>
     <script>
       //Begin SCRIPT section of document. Here we write JavaScript to manipulate the page
       //appearance and respond to user input. Notice we can use JavaScript-style comments
