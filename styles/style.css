@@ -13,6 +13,25 @@
 }
 
 /*************************************************************************
+* CSS CLASSES FOR SKIP LINK (USED BY SCREEN READERS AND KEYBOARD NAV)
+******************************************************  *******************/
+.skip-link {
+    background: var(--main-color);
+    color: var(--text-color);
+    font-weight: 700;              
+    left: 50%;          
+    padding: 4px;
+    position: absolute;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+    z-index: 200;
+}
+
+.skip-link:focus {
+    transform: translateY(0%);
+}
+
+/*************************************************************************
 * CSS CLASSES FOR TOP NAVIGATION BAR
 *************************************************************************/
 
@@ -48,11 +67,7 @@
     text-align: center;
 }
 
-/* navbar-btn:focus -- When the button is clicked, suppress the default
-   buttton outline. */
-.navbar-btn:focus {
-    outline: none;
-}
+
 
 /* navbar-btn-icon styles the navbar button icon. It should be white, in a large
    font, centered within the button, and the cursor should change to a pointer 
@@ -137,6 +152,10 @@
     color: var(--text-color);
 }
 
+.modebar-hidden {
+    display: none;
+}
+
 /*************************************************************************
 * CSS CLASSES FOR SIDE MENU
 *************************************************************************/
@@ -171,6 +190,25 @@
     align-items: center;
 }
 
+.sidemenu ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.sidemenu-item {
+    padding: 24px 0px 24px 24px; /* top, right, bottom, left */
+    font-size: 18px;
+}
+
+.sidemenu-item a:focus {
+    outline:none;       
+}
+
+.sidemenu-item:focus-within, .sidemenu-item:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}  
 
 
 /* sidemenu-profile-pic -- Styling for user profile pic in side menu */
@@ -185,32 +223,6 @@
     width: 75%;
     padding-left: 4px;
     font-size: 20px;
-}
-
-/* sidemenu a -- Styling for menu items, which have <a> tag. */
-.sidemenu button {
-    text-align: left;
-    border: none;
-    background-color: var(--main-color); /* Match to main-color */
-    color: var(--text-color);
-    width: 100%;
-    cursor: pointer;
-    margin-left: 0px;
-    padding: 24px 0px 24px 24px; /* top, right, bottom, left */
-    font-size: 18px;
-}
-
-/* sidemenu button:hover -- When menu item is hovered over, highlight it 
-   with light gray background and blue text */
-.sidemenu button:hover {
-    background-color: var(--item-highlight-color);
-    color: var(--main-color);
-}
-
-/* sidemenu button:focus -- When menu item is clicked on to give it focus,
-   suppress the default button outline */
-.sidemenu button:focus {
-    outline: none;
 }
 
 .sidemenu-item-hidden {

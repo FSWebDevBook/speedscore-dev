@@ -12,66 +12,103 @@
   </head>
   <body>
     <!-- The TOP NAVIGATION BAR -->
-    <header class="navbar" aria-label="Top Navigation Bar"> 
-      <div class="navbar-items" aria-hidden="true">
-        <button type="button" class="navbar-btn" aria-haspopup="true" aria-label="Menu Button">
-          <span class="navbar-btn-icon fas fa-bars" aria-hidden="true"></span>
+    <header class="navbar"> 
+      <a class="skip-link" href="#feedPage">Skip to content</a>  
+      <div class="navbar-items">
+        <button id="menuBtn" type="button"  tabindex="0"  class="navbar-btn" 
+          aria-controls="sideMenu" aria-label="menu button" 
+          aria-haspopup="true" aria-expanded="false">
+          <span id="menuBtnIcon" class="navbar-btn-icon fas fa-bars"></span>
         </button>
         <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo">
         <h1 id="app-title" class="navbar-title">Welcome to SpeedScore</h1>
       </div>
     </header>
     <!-- BOTTOM "MODE" BAR -->
-    <nav class="modebar" role="tablist" aria-label="Bottom Mode Bar" >
-      <button type="button" class="modebar-selected" role="tab" 
-        aria-labeledby="feedSpan" aria-selected="true">
-        <span class="modebar-icon fa fa-th-list" aria-hidden="true"></span>
-        <span id="feedSpan" class="modebar-text">Feed</span></button>
-      <button type="button" class="modebar-unselected" role="tab" 
-        aria-labeledby="roundsSpan" aria-selected="false">
-        <span class="modebar-icon fa fa-history" aria-hidden="true"></span>
-        <span id="roundsSpan"class="modebar-text">Rounds</span></button>
-      <button type="button" class="modebar-unselected" role="tab" 
-        aria-labeledby="coursesSpan" aria-selected="false">
-        <span class="modebar-icon fa fa-flag" aria-hidden="true"></span>
-        <span id="coursesSpan"class="modebar-text">Courses</span></button>
+    <nav id="modeBar" class="modebar" role="tablist" tabindex=0 >
+      <button type="button" class="modebar-selected" role="tab" tabindex="-1"
+        aria-labeledby="feedSpan" aria-selected="true" aria-controls="feedPage">
+        <span class="modebar-icon fa fa-th-list"></span>
+        <span id="feedSpan" class="modebar-text">Feed</span>
+      </button>
+      <button type="button" class="modebar-unselected" role="tab" tabindex="-1"
+        aria-labeledby="roundsSpan" aria-selected="false" aria-controls="roundsPage">
+        <span class="modebar-icon fa fa-history"></span>
+        <span id="roundsSpan"class="modebar-text">Rounds</span>
+      </button>
+      <button type="button" class="modebar-unselected" role="tab" tabindex="-1"
+        aria-labeledby="coursesSpan" aria-selected="false" aria-controls="coursesPage">
+        <span class="modebar-icon fa fa-flag"></span>
+        <span id="coursesSpan"class="modebar-text">Courses</span>
+      </button>
     </nav>
     <!--THE SIDE MENU -->
-    <section class="sidemenu sidemenu-closed" aria-label="App Menu" >
-      <!--SIDE MENU TITLE -->
-      <section class="sidemenu-title" aria-label="Side Menu Title">
-        <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
-          alt="Current user's profile picture">
-        <span class="sidemenu-userID" aria-label="Current user's name">Chris Hundhausen</span>
-      </section>
+    <nav id="sideMenuNav" class="sidemenu sidemenu-closed">
       <!--SIDE MENU ITEMS -->
-      <nav role="menu" aria-label="Side Menu Items">
+      <ul id="sideMenu" role="menu">
+         <!--SIDE MENU TITLE -->
+        <li class="sidemenu-title">
+          <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
+            alt="Current user's profile picture">
+          <span class="sidemenu-userID">Chris Hundhausen</span>
+        </li>
         <!--FEED MODE MENU ITEMS-->
-        <button type="button" role="menuitem">Post to Feed</button>
-        <button type="button" role="menuitem">Follow Others</button>
+        <li class="sidemenu-item" role="none">
+          <a role="menuitem"  tabindex="-1">Post to Feed</a>
+        </li>
+        <li class="sidemenu-item" role="none">
+          <a role="menuitem" tabindex="-1">Follow Others</a>
+        </li>
         <!--ROUNDS MODE MENU ITEMS -->
-        <button class="sidemenu-item-hidden" type="button"role="menuitem">Log Round</button> 
+        <li class="sidemenu-item sidemenu-item-hidden" role="none" class="">
+          <a role="menuitem" tabindex="-1">Log Round</a>
+        </li>
         <!--COURSES MODE MENU ITEMS -->
-        <button class="sidemenu-item-hidden" type="button" role="menuitem">Add Course</button>
+        <li class="sidemenu-item sidemenu-item-hidden" role="none" class="">
+          <a role="menuitem" tabindex="-1">Add Course</a>
+        </li>
         <!--ALWAYS AVAILABLE MENU ITEMS -->
-        <button type="button" role="menuitem">About</button>
-        <button type="button" role="menuitem">Log Out</button>
-      </nav>
-    </section>
+        <li class="sidemenu-item" role="none">
+          <a role="menuitem" tabindex="-1">About</a>
+        </li>
+        <li class="sidemenu-item" role="none">
+          <a role="menuitem" tabindex="-1">Log Out</a>
+        </li>
+      </ul>
+    </nav>
     <!--FLOATING ACTION BUTTON-->
-    <button class="float-btn" role="button" aria-label="Log Round">
-      <span class="float-btn-icon fas fa-plus" aria-hidden="true"></span>
+    <button class="float-btn" role="button" aria-label="Post to Feed">
+      <span class="float-btn-icon fas fa-plus"></span>
     </button>
+    <!-- LOGIN MODE PAGE -->
+    <main id="loginPage" tabindex="0" class="app-page" role="tabpanel"
+      aria-label="Log In" hidden>
+      <h1 class="app-page-header">Log In Page</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </main>
     <!-- FEED MODE PAGE -->
-    <section class="app-page" arial-label="Feed Mode Content">
+    <main id="feedPage" tabindex="0" class="app-page" role="tabpanel" 
+      arial-labelledby="feedSpan">
       <h1 class="app-page-header">Activity Feed</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
-    </section>
-    <script>
-      //Begin SCRIPT section of document. Here we write JavaScript to manipulate the page
-      //appearance and respond to user input. Notice we can use JavaScript-style comments
-      //instead of HTML (<!--) comments.
+    </main>
+    <!-- ROUNDS MODE PAGE -->
+    <main id="roundsPage" tabindex="0" class="app-page" role="tabpanel" 
+      arial-labelledby="roundsSpan" hidden>
+      <h1 class="app-page-header">My Rounds</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </main>
+    <!-- COURSES MODE PAGE -->
+    <main id="coursesPage" tabindex="0" class="app-page" role="tabpanel" 
+      arial-labelledby="coursesSpan" hidden>
+      <h1 class="app-page-header">Courses</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </main>
+    <script src="scripts/main.js">
     </script>
   </body>
 </html>
