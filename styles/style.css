@@ -117,7 +117,6 @@
     padding-top: 6px;
     padding-bottom: 6px;
     font-size: 17px;
-    cursor: pointer;
     text-decoration: none;
 }
 
@@ -143,11 +142,13 @@
 }
 
 .modebar-selected {
+    cursor: default;
     background-color: var(--item-highlight-color);
     color: var(--main-color);
 }
 
 .modebar-unselected {
+    cursor: pointer;
     background-color: var(--main-color);
     color: var(--text-color);
 }

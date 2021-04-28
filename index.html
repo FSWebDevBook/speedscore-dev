@@ -21,22 +21,22 @@
           <span id="menuBtnIcon" class="navbar-btn-icon fas fa-bars"></span>
         </button>
         <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo">
-        <h1 id="app-title" class="navbar-title">Welcome to SpeedScore</h1>
+        <h1 id="appTitle" class="navbar-title">Activity Feed</h1>
       </div>
     </header>
     <!-- BOTTOM "MODE" BAR -->
-    <nav id="modeBar" class="modebar" role="tablist" tabindex=0 >
-      <button type="button" class="modebar-selected" role="tab" tabindex="-1"
+    <nav id="modeBar" class="modebar" role="tablist" tabindex=0>
+      <button id="feedMode" type="button" class="modebar-btn modebar-selected" role="tab" tabindex="-1"
         aria-labeledby="feedSpan" aria-selected="true" aria-controls="feedPage">
         <span class="modebar-icon fa fa-th-list"></span>
         <span id="feedSpan" class="modebar-text">Feed</span>
       </button>
-      <button type="button" class="modebar-unselected" role="tab" tabindex="-1"
+      <button id="roundsMode" type="button" class="modebar-btn modebar-unselected" role="tab" tabindex="-1"
         aria-labeledby="roundsSpan" aria-selected="false" aria-controls="roundsPage">
         <span class="modebar-icon fa fa-history"></span>
         <span id="roundsSpan"class="modebar-text">Rounds</span>
       </button>
-      <button type="button" class="modebar-unselected" role="tab" tabindex="-1"
+      <button id="coursesMode" type="button" class="modebar-btn modebar-unselected" role="tab" tabindex="-1"
         aria-labeledby="coursesSpan" aria-selected="false" aria-controls="coursesPage">
         <span class="modebar-icon fa fa-flag"></span>
         <span id="coursesSpan"class="modebar-text">Courses</span>
@@ -53,18 +53,18 @@
           <span class="sidemenu-userID">Chris Hundhausen</span>
         </li>
         <!--FEED MODE MENU ITEMS-->
-        <li class="sidemenu-item" role="none">
+        <li class="sidemenu-item feedMode-item" role="none">
           <a role="menuitem"  tabindex="-1">Post to Feed</a>
         </li>
-        <li class="sidemenu-item" role="none">
+        <li class="sidemenu-item feedMode-item" role="none">
           <a role="menuitem" tabindex="-1">Follow Others</a>
         </li>
         <!--ROUNDS MODE MENU ITEMS -->
-        <li class="sidemenu-item sidemenu-item-hidden" role="none" class="">
+        <li class="sidemenu-item roundsMode-item sidemenu-item-hidden" role="none" class="">
           <a role="menuitem" tabindex="-1">Log Round</a>
         </li>
         <!--COURSES MODE MENU ITEMS -->
-        <li class="sidemenu-item sidemenu-item-hidden" role="none" class="">
+        <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" role="none" class="">
           <a role="menuitem" tabindex="-1">Add Course</a>
         </li>
         <!--ALWAYS AVAILABLE MENU ITEMS -->
@@ -81,28 +81,28 @@
       <span class="float-btn-icon fas fa-plus"></span>
     </button>
     <!-- LOGIN MODE PAGE -->
-    <main id="loginPage" tabindex="0" class="app-page" role="tabpanel"
+    <main id="loginModePage" tabindex="0" class="app-page" role="tabpanel"
       aria-label="Log In" hidden>
       <h1 class="app-page-header">Log In Page</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </main>
     <!-- FEED MODE PAGE -->
-    <main id="feedPage" tabindex="0" class="app-page" role="tabpanel" 
+    <main id="feedModePage" tabindex="0" class="app-page" role="tabpanel" 
       arial-labelledby="feedSpan">
       <h1 class="app-page-header">Activity Feed</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </main>
     <!-- ROUNDS MODE PAGE -->
-    <main id="roundsPage" tabindex="0" class="app-page" role="tabpanel" 
+    <main id="roundsModePage" tabindex="0" class="app-page" role="tabpanel" 
       arial-labelledby="roundsSpan" hidden>
       <h1 class="app-page-header">My Rounds</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </main>
     <!-- COURSES MODE PAGE -->
-    <main id="coursesPage" tabindex="0" class="app-page" role="tabpanel" 
+    <main id="coursesModePage" tabindex="0" class="app-page" role="tabpanel" 
       arial-labelledby="coursesSpan" hidden>
       <h1 class="app-page-header">Courses</h1>
       <p class="app-page-content">This page is under construction.</p>
