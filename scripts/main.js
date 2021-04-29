@@ -12,6 +12,8 @@
 *************************************************************************/
 
 let mode = "feedMode"; //The app's current mode
+let modes = ["loginMode","feedMode","roundsMode","coursesMode"];
+let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the focus
 
 /* modeMenuIndices provides the sequence of actual indices into the  "sidemenu-item" DOM element
  * (an unordered list) for each mode. Since the menu items dynamically change based on the mode, 
@@ -29,8 +31,8 @@ var modeToTitle = {"feedMode": "Activity Feed",
                    "coursesMode": "Courses",
                    "loginMode": "Welcome to SpeedScore"};
 
-let focusIndex = 0; //the index of the current mode's menu item that has the focus. Index 0
-                    //is the first item, 1 is the second item, and so forth. focusIndex 
+let focusedMenuItemIndex = 0; //the index of the current mode's menu item that has the focus. Index 0
+                    //is the first item, 1 is the second item, and so forth. focusedMenuItemIndex 
                     //provides an index into the arrys in the modeMenuIndices object.
                     //Think of it as a "pointer to a pointer."
 
@@ -49,9 +51,9 @@ let focusIndex = 0; //the index of the current mode's menu item that has the foc
  * Shift the focus to the first menu item.
  *************************************************************************/
 function focusFirstMenuItem() {
-    focusIndex = 0;
+    focusedMenuItemIndex = 0;
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    const mIndex = modeMenuIndices[mode][focusIndex];
+    const mIndex = modeMenuIndices[mode][focusedMenuItemIndex];
     sideMenuItems[mIndex].firstElementChild.focus();
 }
 
@@ -62,8 +64,8 @@ function focusFirstMenuItem() {
  *************************************************************************/
 function focusLastMenuItem() {
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    focusIndex = modeMenuIndices[mode].length - 1;
-    sideMenuItems[modeMenuIndices[mode][focusIndex]].firstElementChild.focus();
+    focusedMenuItemIndex = modeMenuIndices[mode].length - 1;
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
 }
 
 /*************************************************************************
@@ -75,8 +77,8 @@ function focusLastMenuItem() {
  *************************************************************************/                    
 function focusPrevMenuItem() {
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    focusIndex = (focusIndex == 0 ? modeMenuIndices[mode].length-1 : focusIndex - 1);
-    sideMenuItems[modeMenuIndices[mode][focusIndex]].firstElementChild.focus();
+    focusedMenuItemIndex = (focusedMenuItemIndex == 0 ? modeMenuIndices[mode].length-1 : focusedMenuItemIndex - 1);
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
 }
 
 /*************************************************************************
@@ -88,8 +90,8 @@ function focusPrevMenuItem() {
  *************************************************************************/
 function focusNextMenuItem() {
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    focusIndex = (focusIndex ==  modeMenuIndices[mode].length-1 ? 0 : focusIndex + 1);
-    sideMenuItems[modeMenuIndices[mode][focusIndex]].firstElementChild.focus();
+    focusedMenuItemIndex = (focusedMenuItemIndex ==  modeMenuIndices[mode].length-1 ? 0 : focusedMenuItemIndex + 1);
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
 }
 
 /*************************************************************************
@@ -221,8 +223,11 @@ function switchMode(newMode) {
     //Switch mode button that is highlighted
     prevModeBtn.classList.remove("modebar-selected");
     prevModeBtn.classList.add("modebar-unselected");
+    prevModeBtn.setAttribute("aria-selected",false);
     newModeBtn.classList.remove("modebar-unselected");
     newModeBtn.classList.add("modebar-selected");
+    newModeBtn.setAttribute("aria-selected",true);
+    newModeBtn.focus();
     //Change page title
     document.getElementById("appTitle").textContent = modeToTitle[newMode];
     //Swap out page content
@@ -238,9 +243,54 @@ function switchMode(newMode) {
     newItems[i].style.display = "block";
     }
     mode = newMode; //Change mode
+    modeIndex = (mode == "feedMode" ? 1 : (mode == "roundsMode" ? 2 : 3));
 }
 
+/*************************************************************************
+ * @function keyDownModeBarFocused 
+ * @Desc 
+ * Handles valid keydown events when the mode bar has the focus, per the
+ * w3 spec: Left and Right Arrow change the focus to the previous and 
+ * next tab; Home and End change the focus to the first and last tab; 
+ * and Enter or Space selects the currently focused tab.
+ * @param newMode
+ * The string corresponding to the new mode (feedMode, roundsMode, 
+ * coursesMode, loginMode)
+ *************************************************************************/
 function keyDownModeBarFocused(key) {
+    let newFocusedTab; 
+    if (key=="Enter" || key=="Space") {
+      //Switch to mode corresponding to tab with current focus
+      switchMode(modes[focusedModeIndex]); 
+    } else if (key=="ArrowRight") {
+        //shift focus to next mode tab
+        document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
+        focusedModeIndex = (focusedModeIndex == 3 ? 1 : focusedModeIndex+1);
+        newFocusedTab = document.getElementById(modes[focusedModeIndex]);
+        newFocusedTab.setAttribute("tabindex","0");
+        newFocusedTab.focus();  
+    }  else if (key=="ArrowLeft") {
+        //shift focus to prev mode tab
+        document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
+        focusedModeIndex = (focusedModeIndex == 1 ? 3 : focusedModeIndex-1);
+        newFocusedTab = document.getElementById(modes[focusedModeIndex]);
+        newFocusedTab.setAttribute("tabindex","0");
+        newFocusedTab.focus(); 
+    } else if (key=="Home") {
+        //shift focus to prev mode tab
+        document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
+        focusedModeIndex = 1;
+        let newFocusedTab = document.getElementById(modes[focusedModeIndex]);
+        newFocusedTab.setAttribute("tabindex","0");
+        newFocusedTab.focus(); 
+    } else if (key=="End") {
+        //shift focus to last mode tab
+        document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
+        focusedModeIndex = 3;
+        let newFocusedTab = document.getElementById(modes[focusedModeIndex]);
+        newFocusedTab.setAttribute("tabindex","0");
+        newFocusedTab.focus(); 
+    }
 
 }
 
@@ -254,6 +304,23 @@ for (let i = 0; i < bottomBtns.length; ++i) {
     bottomBtns[i].addEventListener("click",() => switchMode(bottomBtns[i].id));
 }
 
+/*************************************************************************
+ * FLOATING ACTION BUTTON INTERACTION
+ * The following functions implement the functionality of the floating
+ * action button. This is just a button, so making the button 
+ * accessible involves allowing the user to type Enter or Space when
+ * the button is focused.
+*************************************************************************/
+document.getElementById("floatBtn").addEventListener("click",function() {
+    alert("Floating action button clicked.");
+});
+
+function keyDownFloatingBtn(key) {
+    if (key=="Enter" || key=="Space") {
+        //Click the button
+        document.getElementById("floatBtn").click(); 
+      }
+}
 
 /*************************************************************************
  * @function Document Keydown Event Handler 
@@ -261,11 +328,18 @@ for (let i = 0; i < bottomBtns.length; ++i) {
  * When the user presses a keyboard button in the app, we interpret the
  * keypress based on which user interface element currently has focus. 
  *************************************************************************/
- document.addEventListener("keydown", function(e) {  
-    if (e.code == "Tab") { //We allow tab events to pass through.
-        return;
-    }
+ document.addEventListener("keydown", function(e) { 
     const element = document.activeElement; //The item that currently has focus
+    if (e.code == "Tab") {
+        if (element.classList.contains("modebar-btn")) {
+            //We're exiting the mode bar; need to reset focused tab to the active tab
+            document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
+            focusedModeIndex = (mode=="feedMode" ? 1 : (mode=="roundsMode" ? 2: 3));
+            document.getElementById(mode).setAttribute("tabindex","0");
+        }
+        return; //We let tab events pass through; default behavior is okay
+    } 
+    //If here, event was not a tab
     if (element.id === "menuBtn") { 
         //Handle keypress when menu button has focus
        keyDownMenuBtnFocused(e.code);
@@ -274,6 +348,11 @@ for (let i = 0; i < bottomBtns.length; ++i) {
         //Handle key press when side menu item has focus
         keyDownMenuItemFocused(e.code);
         
+    } else if (element.classList.contains("modebar-btn")) {
+        //Handle key press when button in bottom mode bar has focus
+        keyDownModeBarFocused(e.code);
+    } else if (element.id === "floatBtn") {
+        keyDownFloatingBtn(e.code);
     }
     //We are handling the interaction here, so prevent default routing.
     e.preventDefault(); 

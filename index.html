@@ -25,19 +25,22 @@
       </div>
     </header>
     <!-- BOTTOM "MODE" BAR -->
-    <nav id="modeBar" class="modebar" role="tablist" tabindex=0>
-      <button id="feedMode" type="button" class="modebar-btn modebar-selected" role="tab" tabindex="-1"
-        aria-labeledby="feedSpan" aria-selected="true" aria-controls="feedPage">
+    <nav id="modeBar" class="modebar" role="tablist" tabindex="-1">
+      <button id="feedMode" type="button" class="modebar-btn modebar-selected" 
+        role="tab" tabindex="0"
+        aria-labeledby="feedSpan" aria-selected="true" aria-controls="feedModePage">
         <span class="modebar-icon fa fa-th-list"></span>
         <span id="feedSpan" class="modebar-text">Feed</span>
       </button>
-      <button id="roundsMode" type="button" class="modebar-btn modebar-unselected" role="tab" tabindex="-1"
-        aria-labeledby="roundsSpan" aria-selected="false" aria-controls="roundsPage">
+      <button id="roundsMode" type="button" class="modebar-btn modebar-unselected" 
+        role="tab" tabindex="-1"
+        aria-labeledby="roundsSpan" aria-selected="false" aria-controls="roundsNodePage">
         <span class="modebar-icon fa fa-history"></span>
         <span id="roundsSpan"class="modebar-text">Rounds</span>
       </button>
-      <button id="coursesMode" type="button" class="modebar-btn modebar-unselected" role="tab" tabindex="-1"
-        aria-labeledby="coursesSpan" aria-selected="false" aria-controls="coursesPage">
+      <button id="coursesMode" type="button" class="modebar-btn modebar-unselected" 
+        role="tab" tabindex="-1"
+        aria-labeledby="coursesSpan" aria-selected="false" aria-controls="coursesModePage">
         <span class="modebar-icon fa fa-flag"></span>
         <span id="coursesSpan"class="modebar-text">Courses</span>
       </button>
@@ -76,10 +79,6 @@
         </li>
       </ul>
     </nav>
-    <!--FLOATING ACTION BUTTON-->
-    <button class="float-btn" role="button" aria-label="Post to Feed">
-      <span class="float-btn-icon fas fa-plus"></span>
-    </button>
     <!-- LOGIN MODE PAGE -->
     <main id="loginModePage" tabindex="0" class="app-page" role="tabpanel"
       aria-label="Log In" hidden>
@@ -108,6 +107,10 @@
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </main>
+     <!--FLOATING ACTION BUTTON-->
+     <button id="floatBtn" class="float-btn" role="button" aria-label="Post to Feed">
+      <span class="float-btn-icon fas fa-plus"></span>
+    </button>
     <script src="scripts/main.js">
     </script>
   </body>

@@ -125,8 +125,12 @@
     color: var(--main-color);
 }
 
-.modebar button:focus {
-    outline: none;
+.modebar-selected:focus {
+    outline-color: var(--main-color);
+}
+
+.modebar-unselected:focus {
+    outline-color: var(--item-highlight-color);
 }
 
 /* .modebar-icon -- Style the icons in the bottom bar */
