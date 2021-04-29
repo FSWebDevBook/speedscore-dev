@@ -37,6 +37,37 @@ let focusedMenuItemIndex = 0; //the index of the current mode's menu item that h
                     //Think of it as a "pointer to a pointer."
 
 /*************************************************************************
+ * SKIP LINK
+ * The "skip link" is an accessbility feature that allows the user to 
+ * skip an app's navigation sections and go right to the main content.
+ * This is usually done using an href. However, we use JavaScript 
+ * to accommodate SpeedScore's multiple mode pages.
+*************************************************************************/    
+
+/*************************************************************************
+ * @function skipLink click
+ * @desc 
+ * When the user clicks on the click link, change the focus to the current
+ * mode's content page.
+ *************************************************************************/
+document.getElementById("skipLink").addEventListener("click",function() {
+    document.getElementById(mode + "Page").focus();
+});
+
+/*************************************************************************
+ * @function keyDownSkipLinkFocused
+ * @desc 
+ * When the user presses either the Space or Enter key when the skip link
+ * is focused, change the focus to the current mode's content page.
+ *************************************************************************/
+function keyDownSkipLinkFocused(key) {
+    if (key === "Space" || key === "Enter") {
+       document.getElementById("skipLink").click();
+    }
+ }
+
+
+/*************************************************************************
  * SIDE MENU INTERACTION
  * The following functions implement the functionality of the side menu
  * for both the visual and accessible keyboard interface.
@@ -142,6 +173,7 @@ function toggleSideMenu(focusItem)  {
  *************************************************************************/
  document.getElementById("menuBtn").addEventListener("click", toggleSideMenu);
 
+
 /*************************************************************************
  * @function keyDownMenuBtnFocused
  * @desc 
@@ -157,7 +189,6 @@ function keyDownMenuBtnFocused(key) {
         toggleSideMenu("last");
     }
 }
-
 
 /*************************************************************************
  * @function keyDownMenuItemFocused
@@ -182,9 +213,9 @@ function keyDownMenuItemFocused(key) {
         //Close menu without choosing item
         toggleSideMenu(); //Close menu
         document.getElementById("menuBtn").focus();
-    } else if (key == "ArrowUp") {
+    } else if (key == "ArrowUp" || key == "ArrowLeft") {
         focusPrevMenuItem();
-    } else if (key == "ArrowDown") {
+    } else if (key == "ArrowDown" || key == "ArrowRight") {
         focusNextMenuItem();
     } else if (key == "Home") {
         focusFirstMenuItem();
@@ -259,31 +290,31 @@ function switchMode(newMode) {
  *************************************************************************/
 function keyDownModeBarFocused(key) {
     let newFocusedTab; 
-    if (key=="Enter" || key=="Space") {
+    if (key =="Enter" || key =="Space") {
       //Switch to mode corresponding to tab with current focus
       switchMode(modes[focusedModeIndex]); 
-    } else if (key=="ArrowRight") {
+    } else if (key =="ArrowRight" || key =="ArrowDown") {
         //shift focus to next mode tab
         document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
         focusedModeIndex = (focusedModeIndex == 3 ? 1 : focusedModeIndex+1);
         newFocusedTab = document.getElementById(modes[focusedModeIndex]);
         newFocusedTab.setAttribute("tabindex","0");
         newFocusedTab.focus();  
-    }  else if (key=="ArrowLeft") {
+    }  else if (key == "ArrowLeft" || key == "ArrowUp") {
         //shift focus to prev mode tab
         document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
         focusedModeIndex = (focusedModeIndex == 1 ? 3 : focusedModeIndex-1);
         newFocusedTab = document.getElementById(modes[focusedModeIndex]);
         newFocusedTab.setAttribute("tabindex","0");
         newFocusedTab.focus(); 
-    } else if (key=="Home") {
+    } else if (key =="Home") {
         //shift focus to prev mode tab
         document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
         focusedModeIndex = 1;
         let newFocusedTab = document.getElementById(modes[focusedModeIndex]);
         newFocusedTab.setAttribute("tabindex","0");
         newFocusedTab.focus(); 
-    } else if (key=="End") {
+    } else if (key =="End") {
         //shift focus to last mode tab
         document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
         focusedModeIndex = 3;
@@ -336,6 +367,9 @@ function keyDownFloatingBtn(key) {
             document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
             focusedModeIndex = (mode=="feedMode" ? 1 : (mode=="roundsMode" ? 2: 3));
             document.getElementById(mode).setAttribute("tabindex","0");
+        } else if (element.getAttribute("role") == "menuitem") {
+            //Close menu as user tabs out of it
+            toggleSideMenu();
         }
         return; //We let tab events pass through; default behavior is okay
     } 
@@ -353,6 +387,8 @@ function keyDownFloatingBtn(key) {
         keyDownModeBarFocused(e.code);
     } else if (element.id === "floatBtn") {
         keyDownFloatingBtn(e.code);
+    } else if (element.id === "skipLink") {
+        keyDownSkipLinkFocused(e.code);
     }
     //We are handling the interaction here, so prevent default routing.
     e.preventDefault(); 
