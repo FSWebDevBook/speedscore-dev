@@ -135,7 +135,7 @@ function focusNextMenuItem() {
  * the focusItem param is ignored.
  *************************************************************************/
 function toggleSideMenu(focusItem)  {
-    const sideMenu = document.getElementById("sideMenuNav");
+    const sideMenu = document.getElementById("sideMenu");
     const sideMenuIcon = document.getElementById("menuBtnIcon");
     const sideMenuBtn = document.getElementById("menuBtn");
     if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
@@ -160,7 +160,7 @@ function toggleSideMenu(focusItem)  {
         //Close menu
         sideMenu.classList.remove("sidemenu-open");
         sideMenu.classList.add("sidemenu-closed");
-        sideMenuBtn.setAttribute("aria-expanded","false");
+        sideMenuBtn.removeAttribute("aria-expanded");
     }
 }
 
@@ -184,9 +184,9 @@ function toggleSideMenu(focusItem)  {
  * The description of the key that was pressed.
  *************************************************************************/
 function keyDownMenuBtnFocused(key) {
-    if (key === "ArrowDown" || key === "Space" || key === "Enter") {
+    if (key === "ArrowDown" || key === "ArrowRight" || key === "Space" || key === "Enter") {
         toggleSideMenu("first");
-    } else if (key === "ArrowUp") { //open the menu and focus on last item
+    } else if (key === "ArrowUp" || key === "ArrowLeft") { //open the menu and focus on last item
         toggleSideMenu("last");
     }
 }
@@ -205,22 +205,22 @@ function keyDownMenuBtnFocused(key) {
  * exercise.
  *************************************************************************/
 function keyDownMenuItemFocused(key) {
-    if (key == "Enter") { 
+    if (key === "Enter") { 
         //Choose menu item, close menu, and reset focus to menu btn
         toggleSideMenu();   
         document.getElementById("menuBtn").focus();
         alert("User chose menu item!")
-    } else if (key == "Escape") {
-        //Close menu without choosing item
+    } else if (key === "Escape") {
+        //Close menu without choosing item and focus on menubutton
         toggleSideMenu(); //Close menu
         document.getElementById("menuBtn").focus();
-    } else if (key == "ArrowUp" || key == "ArrowLeft") {
+    } else if (key === "ArrowUp" || key == "ArrowLeft") {
         focusPrevMenuItem();
-    } else if (key == "ArrowDown" || key == "ArrowRight") {
+    } else if (key === "ArrowDown" || key == "ArrowRight") {
         focusNextMenuItem();
-    } else if (key == "Home") {
+    } else if (key === "Home") {
         focusFirstMenuItem();
-    } else if (key == "End") {
+    } else if (key === "End") {
         focusLastMenuItem();
     } else {
         //Close menu without choosing item

@@ -179,15 +179,20 @@
     color: var(--text-color);
     transition-duration: 0.3s; /* Animation transition time for open/close is 0.5 sec */
     overflow: hidden;
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
   }
 
 /* sidemenu-open -- Display the side menu as open */
 .sidemenu-open {
+    display: block;
     width: var(--side-menu-width);
 }
 
 /* sidemenu-closed -- Display the side menu as closed */
 .sidemenu-closed {
+    display: none;
     width: 0px;
 }
 
