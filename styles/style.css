@@ -68,8 +68,6 @@
     text-align: center;
 }
 
-
-
 /* navbar-btn-icon styles the navbar button icon. It should be white, in a large
    font, centered within the button, and the cursor should change to a pointer 
    when over it. 
@@ -110,7 +108,7 @@
     display: flex;
 }
     
-/* .modebar a -- Style the links (buttons) inside the bottom bar */
+/* .modebar button -- Style the buttons inside the bottom bar */
 .modebar button { 
     border: none;
     width: 33.33%;
@@ -121,15 +119,19 @@
     text-decoration: none;
 }
 
+/* .modebar button:hover -- Highlight modebar buttons when hovered over */
 .modebar button:hover {
     background-color: var(--item-highlight-color);
     color: var(--main-color);
 }
 
+/* .modebar-selected:focus -- The selected mode gets a blue outline when focused */
 .modebar-selected:focus {
     outline-color: var(--main-color);
 }
 
+/* .modebar-unselected:focus -- Unselected mode buttons get a light
+   outline when focused */
 .modebar-unselected:focus {
     outline-color: var(--item-highlight-color);
 }

@@ -73,7 +73,8 @@ function keyDownSkipLinkFocused(key) {
  * for both the visual and accessible keyboard interface.
  * We use the w3.org  "Navigation Button Example" as a 
  * specification for implementing the accessible keyboard interface:
- * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
+ * 
+ * 
 *************************************************************************/     
 
 /*************************************************************************
@@ -84,8 +85,7 @@ function keyDownSkipLinkFocused(key) {
 function focusFirstMenuItem() {
     focusedMenuItemIndex = 0;
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    const mIndex = modeMenuIndices[mode][focusedMenuItemIndex];
-    sideMenuItems[mIndex].firstElementChild.focus();
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
 }
 
 /*************************************************************************
@@ -94,8 +94,8 @@ function focusFirstMenuItem() {
  * Shift the focus to the last menu item.
  *************************************************************************/
 function focusLastMenuItem() {
-    const sideMenuItems = document.getElementsByClassName("sidemenu-item");
     focusedMenuItemIndex = modeMenuIndices[mode].length - 1;
+    const sideMenuItems = document.getElementsByClassName("sidemenu-item");
     sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
 }
 
@@ -171,7 +171,8 @@ function toggleSideMenu(focusItem)  {
  * When the user clicks the navbarBtn, open or close the side menu 
  * based on current menu state. Remapped to toggleSideMenu
  *************************************************************************/
- document.getElementById("menuBtn").addEventListener("click", toggleSideMenu);
+ document.getElementById("menuBtn").addEventListener("click", (e) => toggleSideMenu("first"));
+
 
 
 /*************************************************************************
@@ -360,7 +361,7 @@ function keyDownFloatingBtn(key) {
  * keypress based on which user interface element currently has focus. 
  *************************************************************************/
  document.addEventListener("keydown", function(e) { 
-    const element = document.activeElement; //The item that currently has focus
+    const element =  document.activeElement; //The item that currently has focus
     if (e.code == "Tab") {
         if (element.classList.contains("modebar-btn")) {
             //We're exiting the mode bar; need to reset focused tab to the active tab
