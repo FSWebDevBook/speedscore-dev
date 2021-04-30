@@ -15,8 +15,8 @@
     <header class="navbar"> 
       <a id="skipLink" class="skip-link" tabindex="0">Skip to content</a>  
       <div class="navbar-items">
-        <button id="menuBtn" type="button"  tabindex="0"  class="navbar-btn" 
-          aria-controls="sideMenu"
+        <button id="menuBtn" type="button" class="navbar-btn" 
+          aria-controls="sideMenu" arira-label="App Actions"
           aria-haspopup="true" aria-expanded="false">
           <span id="menuBtnIcon" class="navbar-btn-icon fas fa-bars"></span>
         </button>
@@ -59,26 +59,23 @@
       </ul>
   
     <!-- BOTTOM "MODE" BAR -->
-    <nav id="modeBar" class="modebar" role="tablist" tabindex="-1">
+    <div id="modeBar" class="modebar" role="tablist" tabindex="-1">
       <button id="feedMode" type="button" class="modebar-btn modebar-selected" 
-        role="tab" tabindex="0"
-        aria-labeledby="feedSpan" aria-selected="true" aria-controls="feedModePage">
+        role="tab" tabindex="0" aria-selected="true" aria-controls="feedModePage">
         <span class="modebar-icon fa fa-th-list"></span>
         <span id="feedSpan" class="modebar-text">Feed</span>
       </button>
       <button id="roundsMode" type="button" class="modebar-btn modebar-unselected" 
-        role="tab" tabindex="-1"
-        aria-labeledby="roundsSpan" aria-selected="false" aria-controls="roundsNodePage">
+        role="tab" tabindex="-1" aria-selected="false" aria-controls="roundsModePage">
         <span class="modebar-icon fa fa-history"></span>
         <span id="roundsSpan"class="modebar-text">Rounds</span>
       </button>
       <button id="coursesMode" type="button" class="modebar-btn modebar-unselected" 
-        role="tab" tabindex="-1"
-        aria-labeledby="coursesSpan" aria-selected="false" aria-controls="coursesModePage">
+        role="tab" tabindex="-1" aria-selected="false" aria-controls="coursesModePage">
         <span class="modebar-icon fa fa-flag"></span>
         <span id="coursesSpan"class="modebar-text">Courses</span>
       </button>
-    </nav>
+    </div>
     <!--FLOATING ACTION BUTTON-->
     <button id="floatBtn" class="float-btn" role="button" aria-label="Post to Feed">
       <span class="float-btn-icon fas fa-plus"></span>

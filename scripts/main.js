@@ -160,7 +160,7 @@ function toggleSideMenu(focusItem)  {
         //Close menu
         sideMenu.classList.remove("sidemenu-open");
         sideMenu.classList.add("sidemenu-closed");
-        sideMenuBtn.removeAttribute("aria-expanded");
+        sideMenuBtn.setAttribute("aria-expanded","false");
     }
 }
 
