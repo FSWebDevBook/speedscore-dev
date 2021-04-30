@@ -211,8 +211,11 @@ function keyDownMenuItemFocused(key) {
         document.getElementById("menuBtn").focus();
         alert("User chose menu item!")
     } else if (key === "Escape") {
-        //Close menu without choosing item and focus on menubutton
-        toggleSideMenu(); //Close menu
+        //Close menu without choosing menu item. We use setTimeout()
+        //to ensure that screen readers register the menu as closed.
+        //I've found toggling aria-expanded to false isn't registered
+        //unless we introduce a small delay.
+        setTimeout(toggleSideMenu,100); //Close menu
         document.getElementById("menuBtn").focus();
     } else if (key === "ArrowUp" || key == "ArrowLeft") {
         focusPrevMenuItem();
