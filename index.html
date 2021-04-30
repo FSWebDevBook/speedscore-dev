@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>SpeedScore</title>
@@ -25,39 +24,36 @@
       </div>
     </header>
     <!--THE SIDE MENU -->
-   
-      <!--SIDE MENU ITEMS -->
-      <ul id="sideMenu" role="menu" class="sidemenu sidemenu-closed">
-         <!--SIDE MENU TITLE -->
-        <li class="sidemenu-title">
-          <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
-            alt="Current user's profile picture">
-          <span class="sidemenu-userID">Chris Hundhausen</span>
-        </li>
-        <!--FEED MODE MENU ITEMS-->
-        <li class="sidemenu-item feedMode-item" role="none">
-          <a role="menuitem"  tabindex="-1">Post to Feed</a>
-        </li>
-        <li class="sidemenu-item feedMode-item" role="none">
-          <a role="menuitem" tabindex="-1">Follow Others</a>
-        </li>
-        <!--ROUNDS MODE MENU ITEMS -->
-        <li class="sidemenu-item roundsMode-item sidemenu-item-hidden" role="none">
-          <a role="menuitem" tabindex="-1">Log Round</a>
-        </li>
-        <!--COURSES MODE MENU ITEMS -->
-        <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" role="none">
-          <a role="menuitem" tabindex="-1">Add Course</a>
-        </li>
-        <!--ALWAYS AVAILABLE MENU ITEMS -->
-        <li class="sidemenu-item" role="none">
-          <a role="menuitem" tabindex="-1">About</a>
-        </li>
-        <li class="sidemenu-item" role="none">
-          <a role="menuitem" tabindex="-1">Log Out</a>
-        </li>
-      </ul>
-  
+    <ul id="sideMenu" role="menu" class="sidemenu sidemenu-closed">
+        <!--SIDE MENU TITLE -->
+      <li class="sidemenu-title">
+        <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
+          alt="Current user's profile picture">
+        <span class="sidemenu-userID">Chris Hundhausen</span>
+      </li>
+      <!--FEED MODE MENU ITEMS-->
+      <li class="sidemenu-item feedMode-item" role="none">
+        <a id="feedModeItemPost" role="menuitem"  tabindex="-1">Post to Feed</a>
+      </li>
+      <li class="sidemenu-item feedMode-item" role="none">
+        <a role="menuitem" tabindex="-1">Follow Others</a>
+      </li>
+      <!--ROUNDS MODE MENU ITEMS -->
+      <li class="sidemenu-item roundsMode-item sidemenu-item-hidden" role="none">
+        <a role="menuitem" tabindex="-1">Log Round</a>
+      </li>
+      <!--COURSES MODE MENU ITEMS -->
+      <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" role="none">
+        <a role="menuitem" tabindex="-1">Add Course</a>
+      </li>
+      <!--ALWAYS AVAILABLE MENU ITEMS -->
+      <li class="sidemenu-item" role="none">
+        <a role="menuitem" tabindex="-1">About</a>
+      </li>
+      <li class="sidemenu-item" role="none">
+        <a role="menuitem" tabindex="-1">Log Out</a>
+      </li>
+    </ul>
     <!-- BOTTOM "MODE" BAR -->
     <div id="modeBar" class="modebar" role="tablist" tabindex="-1">
       <button id="feedMode" type="button" class="modebar-btn modebar-selected" 
@@ -81,27 +77,47 @@
       <span class="float-btn-icon fas fa-plus"></span>
     </button>
     <!-- LOGIN MODE PAGE -->
-    <div id="loginModePage" tabindex="0" class="app-page" role="tabpanel"
+    <div id="loginModePage" tabindex="0" class="app-page login-mode" role="tabpanel"
       aria-label="Log In" hidden>
       <h1 class="app-page-header">Log In Page</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>
-    <!-- FEED MODE PAGE -->
-    <div id="feedModePage" tabindex="0" class="app-page" role="tabpanel">
+    <!-- FEED MODE PAGES -->
+    <div id="feedModeMain" tabindex="0" class="app-page feedMode-page" role="tabpanel">
       <h1 class="app-page-header">Activity Feed</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>
-    <!-- ROUNDS MODE PAGE -->
-    <div id="roundsModePage" tabindex="0" class="app-page" role="tabpanel" hidden>
+    <div id="feedModePost" tabindex="0" class="app-page feedMode-page" role="tabpanel" hidden>
+      <h1 class="app-page-header">Post to Feed</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </div>
+    <div id="feedModeFollow" tabindex="0" class="app-page feedMode-page" role="tabpanel" hidden>
+      <h1 class="app-page-header">Follow Others</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </div>
+    <!-- ROUNDS MODE PAGES -->
+    <div id="roundsModeMain" tabindex="0" class="app-page roundsMode-page" role="tabpanel" hidden>
       <h1 class="app-page-header">My Rounds</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>
-    <!-- COURSES MODE PAGE -->
-    <div id="coursesModePage" tabindex="0" class="app-page" role="tabpanel" hidden>
+    <div id="roundsModeLog" tabindex="0" class="app-page roundsMode-page" role="tabpanel" hidden>
+      <h1 class="app-page-header">Log New Round</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </div>
+    <!-- COURSES MODE PAGES -->
+    <div id="coursesModeMain" tabindex="0" class="app-page coursesMode-page" role="tabpanel" hidden>
       <h1 class="app-page-header">Courses</h1>
+      <p class="app-page-content">This page is under construction.</p>
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+    </div>
+    <div id="coursesModeAdd" tabindex="0" class="app-page coursesMode-page" role="tabpanel" hidden>
+      <h1 class="app-page-header">Add Course</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>

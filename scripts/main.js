@@ -17,7 +17,7 @@ let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the 
 
 /* modeMenuIndices provides the sequence of actual indices into the  "sidemenu-item" DOM element
  * (an unordered list) for each mode. Since the menu items dynamically change based on the mode, 
- * having these sequences makes it much easier to determine the index of the first, last, 
+ * having these sequences makes it easy to determine the index of the first, last, 
  * previous, and next menu item when the user is using the keyboard to cycle through menu items.
  */
 let modeMenuIndices = {
@@ -33,7 +33,7 @@ var modeToTitle = {"feedMode": "Activity Feed",
 
 let focusedMenuItemIndex = 0; //the index of the current mode's menu item that has the focus. Index 0
                     //is the first item, 1 is the second item, and so forth. focusedMenuItemIndex 
-                    //provides an index into the arrys in the modeMenuIndices object.
+                    //provides an index into the arrays in the modeMenuIndices object.
                     //Think of it as a "pointer to a pointer."
 
 /*************************************************************************
@@ -60,7 +60,7 @@ document.getElementById("skipLink").addEventListener("click",function() {
  * When the user presses either the Space or Enter key when the skip link
  * is focused, change the focus to the current mode's content page.
  *************************************************************************/
-function keyDownSkipLinkFocused(key) {
+function keyDownSkipLinkFocused(key) { 
     if (key === "Space" || key === "Enter") {
        document.getElementById("skipLink").click();
     }
@@ -73,9 +73,38 @@ function keyDownSkipLinkFocused(key) {
  * for both the visual and accessible keyboard interface.
  * We use the w3.org  "Navigation Button Example" as a 
  * specification for implementing the accessible keyboard interface:
- * 
- * 
-*************************************************************************/     
+*************************************************************************/   
+
+
+function switchToModeSubPage(subPage) {
+    toggleSideMenu(); //close the menu
+    //Switch icon to left arrow
+    document.getElementById("menuBtnIcon").classList.remove("fa-bars");
+    document.getElementById("menuBtnIcon").classList.add("fa-arrow-left");
+    //Disable bottom mode bar and hide floating action button
+    document.getElementById(mode).setAttribute("tabindex","-1");
+    document.getElementById("modeBar").classList.add("modebar-disabled");
+    document.getElementById("floatBtn").style.display = "none";
+    //Hide main mode page, show new mode subpage page and focus on it
+    document.getElementById(mode + "Main").style.display = "none";
+    let newPage = document.getElementById(mode + subPage);
+    newPage.style.display = "block";
+    newPage.focus();
+    
+}
+
+/*************************************************************************
+ * @function feedModePost CLICK
+ * @desc 
+ * When the "Post to Feed" menu item is selected, we switch to "Post to
+ * Feed" page to allow the user to make a new feed post. The only option
+ * here is to make the post or cancel out of it; the user should not be
+ * able to tab to other UI sections. Thus, we disable all
+ * other UI components.
+ *************************************************************************/
+document.getElementById("feedModeItemPost").addEventListener("click",function() {
+   switchToModeSubPage("Post");
+});
 
 /*************************************************************************
  * @function focusFirstMenuItem
@@ -138,7 +167,22 @@ function toggleSideMenu(focusItem)  {
     const sideMenu = document.getElementById("sideMenu");
     const sideMenuIcon = document.getElementById("menuBtnIcon");
     const sideMenuBtn = document.getElementById("menuBtn");
-    if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
+    if (sideMenuIcon.classList.contains("fa-arrow-left")) { //EXIT LOCKED
+        //User is clicking left arrow to exit "locked" mode page
+        //Restore bars icon
+        sideMenuIcon.classList.remove("fa-arrow-left");
+        sideMenuIcon.classList.add("fa-bars");
+        //Hide current mode page and show main mode page
+        let currModePages = document.getElementsByClassName(mode + "-page");
+        for (let i = 0; i < currModePages.length; ++i) {
+            currModePages[i].style.display = "none"; //hide
+        }
+        document.getElementById(mode + "Main").style.display = "block";
+        //Re-enable bottom mode bar buttons
+        document.getElementById("modeBar").classList.remove("modebar-disabled");
+        //Restore floating button
+        document.getElementById("floatBtn").style.display = "block";
+    } else if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
         //Change menu icon  
         sideMenuIcon.classList.remove("fa-bars");
         sideMenuIcon.classList.add("fa-times");
@@ -166,9 +210,9 @@ function toggleSideMenu(focusItem)  {
 
 
 /*************************************************************************
- * @function navbarBtn click handler
+ * @function menuBtn click handler
  * @desc 
- * When the user clicks the navbarBtn, open or close the side menu 
+ * When the user clicks the menuBtn, open or close the side menu 
  * based on current menu state. Remapped to toggleSideMenu
  *************************************************************************/
  document.getElementById("menuBtn").addEventListener("click", (e) => toggleSideMenu("first"));
@@ -206,10 +250,7 @@ function keyDownMenuBtnFocused(key) {
  *************************************************************************/
 function keyDownMenuItemFocused(key) {
     if (key === "Enter") { 
-        //Choose menu item, close menu, and reset focus to menu btn
-        toggleSideMenu();   
-        document.getElementById("menuBtn").focus();
-        alert("User chose menu item!")
+        document.activeElement.click(); //Click the menu item  
     } else if (key === "Escape") {
         //Close menu without choosing menu item. We use setTimeout()
         //to ensure that screen readers register the menu as closed.
