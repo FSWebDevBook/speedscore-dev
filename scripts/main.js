@@ -73,6 +73,7 @@ function keyDownSkipLinkFocused(key) {
  * for both the visual and accessible keyboard interface.
  * We use the w3.org  "Navigation Button Example" as a 
  * specification for implementing the accessible keyboard interface:
+ * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-actions.html
 *************************************************************************/   
 
 
@@ -91,6 +92,7 @@ function switchToModeSubPage(subPage) {
     //Switch icon to left arrow
     document.getElementById("menuBtnIcon").classList.remove("fa-bars");
     document.getElementById("menuBtnIcon").classList.add("fa-arrow-left");
+    document.getElementById("menuBtnIcon").setAttribute("aria-label","Cancel Post to Feed");
     //Disable bottom mode bar and hide floating action button
     document.getElementById(mode).setAttribute("tabindex","-1");
     document.getElementById("modeBar").classList.add("modebar-disabled");
@@ -181,6 +183,7 @@ function toggleSideMenu(focusItem)  {
         //Restore bars icon
         sideMenuIcon.classList.remove("fa-arrow-left");
         sideMenuIcon.classList.add("fa-bars");
+        sideMenuIcon.setAttribute("aria-label","Actions")
         //Hide current mode page and show main mode page
         let currModePages = document.getElementsByClassName(mode + "-page");
         for (let i = 0; i < currModePages.length; ++i) {
@@ -192,9 +195,10 @@ function toggleSideMenu(focusItem)  {
         //Restore floating button
         document.getElementById("floatBtn").style.display = "block";
     } else if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
-        //Change menu icon  
+        //Change menu icon and label
         sideMenuIcon.classList.remove("fa-bars");
         sideMenuIcon.classList.add("fa-times");
+        sideMenuIcon.setAttribute("aria-label","Close")
         //Open menu
         sideMenu.classList.remove("sidemenu-closed");
         sideMenu.classList.add("sidemenu-open");
@@ -210,6 +214,7 @@ function toggleSideMenu(focusItem)  {
         //Change menu icon
         sideMenuIcon.classList.remove("fa-times");
         sideMenuIcon.classList.add("fa-bars");
+        sideMenuIcon.setAttribute("aria-label","Actions")
         //Close menu
         sideMenu.classList.remove("sidemenu-open");
         sideMenu.classList.add("sidemenu-closed");
