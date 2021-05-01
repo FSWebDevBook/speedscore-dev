@@ -226,13 +226,16 @@
 }
 
 .sidemenu-item {
-    padding: 24px 0px 24px 24px; /* top, right, bottom, left */
-    font-size: 18px;
+    box-sizing: content-box;
+    padding: 0px; 
 }
 
-.sidemenu-item a:focus {
-    outline:none;       
+.sidemenu-item a {
+   padding: 24px 0px 24px 24px; /* top, right, bottom, left */
+   font-size: 18px;
+   display: flex;
 }
+
 
 .sidemenu-item:focus-within, .sidemenu-item:hover {
     cursor: pointer;
@@ -307,4 +310,13 @@
     margin-right: auto;
     height: 200px;
     width: 200px;
+}
+
+.app-page-button {
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: var(--text-color);
+    background-color: var(--main-color);
 }

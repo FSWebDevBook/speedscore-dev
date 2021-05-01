@@ -51,7 +51,7 @@ let focusedMenuItemIndex = 0; //the index of the current mode's menu item that h
  * mode's content page.
  *************************************************************************/
 document.getElementById("skipLink").addEventListener("click",function() {
-    document.getElementById(mode + "Page").focus();
+    document.getElementById(mode + "Main").focus();
 });
 
 /*************************************************************************
@@ -76,6 +76,16 @@ function keyDownSkipLinkFocused(key) {
 *************************************************************************/   
 
 
+/*************************************************************************
+ * @function switchToModeSubPage
+ * @desc 
+ * When a menu item is clicked, we need to switch to the corresponding
+ * submenu page. The user interface changes for such a switch are the
+ * same for all menu items. 
+ * @param submode indicates the name of the submode. We can obtain the
+ * id of the corresponding <div> element using string 
+ * concatenation: mode + subPage
+ *************************************************************************/
 function switchToModeSubPage(subPage) {
     toggleSideMenu(); //close the menu
     //Switch icon to left arrow
@@ -90,7 +100,6 @@ function switchToModeSubPage(subPage) {
     let newPage = document.getElementById(mode + subPage);
     newPage.style.display = "block";
     newPage.focus();
-    
 }
 
 /*************************************************************************
@@ -256,7 +265,8 @@ function keyDownMenuItemFocused(key) {
         //to ensure that screen readers register the menu as closed.
         //I've found toggling aria-expanded to false isn't registered
         //unless we introduce a small delay.
-        setTimeout(toggleSideMenu,100); //Close menu
+        //setTimeout(toggleSideMenu,100); //Close menu
+        toggleSideMenu();
         document.getElementById("menuBtn").focus();
     } else if (key === "ArrowUp" || key == "ArrowLeft") {
         focusPrevMenuItem();
@@ -284,7 +294,7 @@ function keyDownMenuItemFocused(key) {
 
 /*************************************************************************
  * @function switchMode 
- * @Desc 
+ * @desc 
  * Switch from the current mode to a new mode. This entails unhighlighting
  * the bottom bar btn corresponding to the current mode, highlighting 
  * the bottom bar btn corresponding to the new mode, updating the global
@@ -434,10 +444,40 @@ function keyDownFloatingBtn(key) {
         keyDownFloatingBtn(e.code);
     } else if (element.id === "skipLink") {
         keyDownSkipLinkFocused(e.code);
+    } else if (element.id == "feedModePostBtn") {
+        keyDownFeedModePostBtnFocused(e.code);
     }
     //We are handling the interaction here, so prevent default routing.
     e.preventDefault(); 
 
 });
 
-  
+/*************************************************************************
+ * APP MODE PAGES INTERACTION
+ * The following functions implement the functionality of the app mode
+ * pages.
+*************************************************************************/
+
+/*************************************************************************
+ * @function feedModePostBtn click handler
+ * @desc 
+ * When the user presses the button to post a new feed post, we will
+ * eventually make the post. For now, this placeholder handler simply
+ * backs out of the "Post to Feed" mode subpage to demonstrate the idea.
+ *************************************************************************/
+document.getElementById("feedModePostBtn").addEventListener("click",function() {
+    document.getElementById("menuBtn").click();
+})
+
+/*************************************************************************
+ * @function keyDownFeedModeBtnFocused
+ * @desc 
+ * When the user hits "Enter" with the "Post to Feed" button focused, we will
+ * eventually make the post. For now, this placeholder handler simply
+ * backs out of the "Post to Feed" mode subpage to demonstrate the idea.
+ *************************************************************************/
+function keyDownFeedModePostBtnFocused(key) {
+    if (key === "Enter") {
+        document.getElementById("feedModePostBtn").click();
+    }
+}
