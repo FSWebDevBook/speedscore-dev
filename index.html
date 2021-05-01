@@ -55,19 +55,20 @@
       </li>
     </ul>
     <!-- BOTTOM "MODE" BAR -->
-    <div id="modeBar" class="modebar" role="tablist" tabindex="-1">
+    <div id="modeBar" class="modebar" role="tablist" tabindex="-1" 
+      aria-label="App Modes">
       <button id="feedMode" type="button" class="modebar-btn modebar-selected" 
-        role="tab" tabindex="0" aria-selected="true" aria-controls="feedModePage">
+        role="tab" tabindex="0" aria-selected="true" aria-controls="feedModeMain">
         <span class="modebar-icon fa fa-th-list"></span>
         <span id="feedSpan" class="modebar-text">Feed</span>
       </button>
       <button id="roundsMode" type="button" class="modebar-btn modebar-unselected" 
-        role="tab" tabindex="-1" aria-selected="false" aria-controls="roundsModePage">
+        role="tab" tabindex="-1" aria-selected="false" aria-controls="roundsModeMain">
         <span class="modebar-icon fa fa-history"></span>
         <span id="roundsSpan" class="modebar-text">Rounds</span>
       </button>
       <button id="coursesMode" type="button" class="modebar-btn modebar-unselected" 
-        role="tab" tabindex="-1" aria-selected="false" aria-controls="coursesModePage">
+        role="tab" tabindex="-1" aria-selected="false" aria-controls="coursesModeMain">
         <span class="modebar-icon fa fa-flag"></span>
         <span id="coursesSpan" class="modebar-text">Courses</span>
       </button>
@@ -77,7 +78,7 @@
       <span class="float-btn-icon fas fa-plus"></span>
     </button>
     <!-- LOGIN MODE PAGE -->
-    <div id="loginModePage" tabindex="0" class="app-page login-mode" role="tabpanel"
+    <div id="loginModePage" tabindex="0" class="app-page login-mode"
       aria-label="Log In" hidden>
       <h1 class="app-page-header">Log In Page</h1>
       <p class="app-page-content">This page is under construction.</p>
@@ -89,13 +90,13 @@
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>
-    <div id="feedModePost" tabindex="0" class="app-page feedMode-page" role="tabpanel" hidden>
+    <div id="feedModePost" tabindex="0" class="app-page feedMode-page" hidden>
       <h1 class="app-page-header">Post to Feed</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
       <button id="feedModePostBtn" class="app-page-button" type="button">Post to Feed</button>
     </div>
-    <div id="feedModeFollow" tabindex="0" class="app-page feedMode-page" role="tabpanel" hidden>
+    <div id="feedModeFollow" tabindex="0" class="app-page feedMode-page" hidden>
       <h1 class="app-page-header">Follow Others</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
@@ -106,7 +107,7 @@
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>
-    <div id="roundsModeLog" tabindex="0" class="app-page roundsMode-page" role="tabpanel" hidden>
+    <div id="roundsModeLog" tabindex="0" class="app-page roundsMode-page" hidden>
       <h1 class="app-page-header">Log New Round</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
@@ -117,7 +118,7 @@
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
     </div>
-    <div id="coursesModeAdd" tabindex="0" class="app-page coursesMode-page" role="tabpanel" hidden>
+    <div id="coursesModeAdd" tabindex="0" class="app-page coursesMode-page" hidden>
       <h1 class="app-page-header">Add Course</h1>
       <p class="app-page-content">This page is under construction.</p>
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">

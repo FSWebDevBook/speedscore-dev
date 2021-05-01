@@ -20,16 +20,34 @@ let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the 
  * having these sequences makes it easy to determine the index of the first, last, 
  * previous, and next menu item when the user is using the keyboard to cycle through menu items.
  */
-let modeMenuIndices = {
+const modeMenuIndices = {
     "feedMode": [0,1,4,5], 
     "roundsMode": [2,4,5], 
     "coursesMode": [3,4,5]
 };
 
-var modeToTitle = {"feedMode": "Activity Feed",
-                   "roundsMode": "My Rounds",
-                   "coursesMode": "Courses",
-                   "loginMode": "Welcome to SpeedScore"};
+/* pageToTitle maps the app's page Ids to the corresponding titles to be displayed in
+   the appTitle <h1> element in the app banner. */
+const pageToTitle = {
+    "feedMode": "Activity Feed",
+    "feedModePost": "Post to Feed",
+    "feedModeFollow": "Follow Others",
+    "roundsMode": "My Rounds",
+    "roundsModeLog": "Log Round",
+    "roundsModeEdit": "Edit Round",
+    "coursesMode": "Courses",
+    "coursesModeAdd": "Add Course",
+    "coursesModeEdit": "Edit Course",
+    "loginMode": "Welcome to SpeedScore"
+};
+
+ /* modeToActionBtnLabel maps the app's mode to the aria-label for the
+    floating action button in the mode. */
+const modeToActionBtnLabel = {
+    "feedMode": "Post to Feed",
+    "roundsMode": "Log Round",
+    "coursesMode": "Add Course"
+}
 
 let focusedMenuItemIndex = 0; //the index of the current mode's menu item that has the focus. Index 0
                     //is the first item, 1 is the second item, and so forth. focusedMenuItemIndex 
@@ -97,11 +115,16 @@ function switchToModeSubPage(subPage) {
     document.getElementById(mode).setAttribute("tabindex","-1");
     document.getElementById("modeBar").classList.add("modebar-disabled");
     document.getElementById("floatBtn").style.display = "none";
-    //Hide main mode page, show new mode subpage page and focus on it
+    //Hide main mode page
     document.getElementById(mode + "Main").style.display = "none";
+    //Hide skip link
+    document.getElementById("skipLink").style.display = "none";
+    //Switch to new page
     let newPage = document.getElementById(mode + subPage);
     newPage.style.display = "block";
     newPage.focus();
+    //Set new page title
+    document.getElementById("appTitle").textContent = pageToTitle[mode + subPage];   
 }
 
 /*************************************************************************
@@ -190,10 +213,16 @@ function toggleSideMenu(focusItem)  {
             currModePages[i].style.display = "none"; //hide
         }
         document.getElementById(mode + "Main").style.display = "block";
+        sideMenuBtn.focus();
         //Re-enable bottom mode bar buttons
         document.getElementById("modeBar").classList.remove("modebar-disabled");
+        document.getElementById(mode).setAttribute("tabindex","0");
         //Restore floating button
         document.getElementById("floatBtn").style.display = "block";
+        //Restore skip link
+        document.getElementById("skipLink").style.display = "block";
+        //Restore page title
+        document.getElementById("appTitle").textContent = pageToTitle[mode];
     } else if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
         //Change menu icon and label
         sideMenuIcon.classList.remove("fa-bars");
@@ -320,7 +349,9 @@ function switchMode(newMode) {
     newModeBtn.setAttribute("aria-selected",true);
     newModeBtn.focus();
     //Change page title
-    document.getElementById("appTitle").textContent = modeToTitle[newMode];
+    document.getElementById("appTitle").textContent = pageToTitle[newMode];
+    //Change action button label
+    document.getElementById("floatBtn").setAttribute("aria-label",modeToActionBtnLabel[newMode]);
     //Swap out page content
     document.getElementById(mode + "Main").style.display = "none";
     document.getElementById(newMode + "Main").style.display = "block";
