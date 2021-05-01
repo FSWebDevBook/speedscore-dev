@@ -242,9 +242,9 @@ function toggleSideMenu(focusItem)  {
  * The description of the key that was pressed.
  *************************************************************************/
 function keyDownMenuBtnFocused(key) {
-    if (key === "ArrowDown" || key === "ArrowRight" || key === "Space" || key === "Enter") {
+    if (key === "ArrowDown" || key === "Space" || key === "Enter") {
         toggleSideMenu("first");
-    } else if (key === "ArrowUp" || key === "ArrowLeft") { //open the menu and focus on last item
+    } else if (key === "ArrowUp") { //open the menu and focus on last item
         toggleSideMenu("last");
     }
 }
@@ -322,8 +322,8 @@ function switchMode(newMode) {
     //Change page title
     document.getElementById("appTitle").textContent = modeToTitle[newMode];
     //Swap out page content
-    document.getElementById(mode + "Page").style.display = "none";
-    document.getElementById(newMode + "Page").style.display = "block";
+    document.getElementById(mode + "Main").style.display = "none";
+    document.getElementById(newMode + "Main").style.display = "block";
     //Change menu items
     let oldItems = document.getElementsByClassName(mode + "-item");
     let newItems = document.getElementsByClassName(newMode + "-item");
