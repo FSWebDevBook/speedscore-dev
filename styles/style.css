@@ -1,0 +1,322 @@
+/*************************************************************************
+* SPEEDSCORE APP's MAIN STYLESHEET
+*************************************************************************/
+
+*:focus {
+    border: 3px solid #94BFF9 !important;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 
+       0 0 3px rgba(102, 175, 233, 0.6);
+    outline: 0 none;
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
+
+/*************************************************************************
+* GLOBAL CSS VARIABLES
+*************************************************************************/
+:root {
+    --main-color: #13294E;
+    --text-color: white;
+    --item-highlight-color: #f0f0f0;                    
+    --side-menu-width: 250px;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR SKIP LINK (USED BY SCREEN READERS AND KEYBOARD NAV)
+******************************************************  *******************/
+.skip-link {
+    cursor: pointer;    
+    background: var(--main-color);
+    color: var(--text-color);
+    font-weight: 700;              
+    left: 50%;
+    padding: 4px;
+    position: absolute;
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+    z-index: 200;
+}
+
+.skip-link:focus {
+    transform: translateY(0%);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR TOP NAVIGATION BAR
+*************************************************************************/
+
+/* Styling of the fixed navbar bar in the app. Its background
+   needs to be the app's main color (--main-color).  */
+   .navbar {
+    display: block; /* Occupies its own horizontal space */
+    background-color: var(--main-color);
+    position: fixed; /* Doesn't move */
+    top: 0px; /* 0px from top-left */
+    left: 0px; 
+    width: 100%; /* 100% of width of screen */
+    align-content: center;
+    border-radius: 0px;
+    z-index: 100; /* Force it to be on top */
+}
+
+/* navbar-items styles items within navbar. They should be centered top-to-bottom
+   with a small internal margin */
+   .navbar-items {
+    display: flex; 
+    align-items: center;
+  }
+
+/* navbar-btn styles the side menu button in the navbar. Its background 
+   needs to be transparent so that it looks like it's part of the 
+   navbar. Its border color needs to be --main-color so it blends in to
+   the navbar.
+*/
+.navbar-btn {
+    background-color: transparent;
+    border-color: var(--main-color);
+    text-align: center;
+}
+
+/* navbar-btn-icon styles the navbar button icon. It should be white, in a large
+   font, centered within the button, and the cursor should change to a pointer 
+   when over it. 
+*/
+.navbar-btn-icon {
+   color: var(--text-color);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* navbar-app-icon styles the SpeedScore app icon in the navbar. 
+   It should be 38 x 38 pixels, with a small right margin so that 
+   there is space between it and the navbar's title
+*/ 
+.navbar-app-icon {
+    height: 38px;
+    width: 38px;  
+}
+/* navbar-title styles the navbar's title text. 
+   It should be text color in a large font.
+*/
+.navbar-title {
+    margin-left: 4px;
+    color: var(--text-color);
+    font-size: 26px;  
+}
+
+/*************************************************************************
+* CSS CLASSES FOR BOTTOM "MODE" BAR
+*************************************************************************/
+/* .modebar -- Styling for mode bar at the bottom of the page */
+.modebar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 200;
+    display: flex;
+}
+    
+/* .modebar button -- Style the buttons inside the bottom bar */
+.modebar button { 
+    border: none;
+    width: 33.33%;
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+/* .modebar button:hover -- Highlight modebar buttons when hovered over */
+.modebar button:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+/* .modebar-selected:focus -- The selected mode gets a blue outline when focused */
+.modebar-selected:focus {
+    outline-color: var(--main-color);
+}
+
+/* .modebar-unselected:focus -- Unselected mode buttons get a light
+   outline when focused */
+.modebar-unselected:focus {
+    outline-color: var(--item-highlight-color);
+}
+
+/* .modebar-icon -- Style the icons in the bottom bar */
+.modebar-icon {
+    display:block;
+    padding-top:3px;
+}
+
+/* .modebar-text -- Style the text in the bottom bar */
+.modebar-text {
+    display:block;
+    font-size: small;
+}
+
+.modebar-selected {
+    cursor: default;
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+.modebar-unselected {
+    cursor: pointer;
+    background-color: var(--main-color);
+    color: var(--text-color);
+}
+
+.modebar-hidden {
+    display: none;
+}
+
+.modebar-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR SIDE MENU
+*************************************************************************/
+
+/* sidemenu -- Styling of the side menu */
+.sidemenu {
+    height: 100%; /* Menu is full height of window */
+    position: fixed; /* Menu stays in place regardless of other content */
+    z-index: 75; /* Force the menu to be near the front */
+    top: 64px; /* Position menu 64 px from top of screen; accomodates top navbar */
+    left: 0px; /* Position side menu on left-hand side of screen */
+    background-color: var(--main-color); /* Match to main-color */
+    color: var(--text-color);
+    transition-duration: 0.3s; /* Animation transition time for open/close is 0.5 sec */
+    overflow: hidden;
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+  }
+
+/* sidemenu-open -- Display the side menu as open */
+.sidemenu-open {
+    display: block;
+    width: var(--side-menu-width);
+}
+
+/* sidemenu-closed -- Display the side menu as closed */
+.sidemenu-closed {
+    display: none;
+    width: 0px;
+}
+
+/* Style for side menu title */   
+.sidemenu-title {
+    border-bottom: 2px solid var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.sidemenu ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.sidemenu-item {
+    box-sizing: content-box;
+    padding: 0px; 
+}
+
+.sidemenu-item a {
+   padding: 24px 0px 24px 24px; /* top, right, bottom, left */
+   font-size: 18px;
+   display: flex;
+}
+
+
+.sidemenu-item:focus-within, .sidemenu-item:hover {
+    cursor: pointer;
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}  
+
+
+/* sidemenu-profile-pic -- Styling for user profile pic in side menu */
+.sidemenu-profile-pic {
+    width:  25%;
+    height: auto;
+}
+
+/* Style for current user shown in side menu */
+.sidemenu-userID {
+    white-space: nowrap;
+    width: 75%;
+    padding-left: 4px;
+    font-size: 20px;
+}
+
+.sidemenu-item-hidden {
+    display: none;
+}
+
+/*************************************************************************
+* CSS CLASSES FOR FLOATING ACTION BUTTON
+*************************************************************************/
+/* Float-btn -- Styling for the floating action button. It appears in the
+   lower right corder of the app as a large circle with a slight shadow. */
+   .float-btn {
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:60px;
+        right:40px;
+        color: var(--text-color);
+        background-color: var(--main-color);
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+}
+
+/* float-btn:hover -- When menu item is hovered over, highlight it 
+   with light gray background and blue text */
+.float-btn:hover {
+    background-color: var(--item-highlight-color);
+    color: var(--main-color);
+}
+
+/*************************************************************************
+* CSS CLASSES FOR APP CONTENT PAGES
+*************************************************************************/
+.app-page {
+    padding-top: 70px;
+}
+
+.app-page-header {
+    text-align: center;
+    font-size: 48px;
+}
+
+.app-page-content {
+    text-align: center;
+    font-size: 24px;
+}
+
+.app-page-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
+}
+
+.app-page-button {
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color: var(--text-color);
+    background-color: var(--main-color);
+}
