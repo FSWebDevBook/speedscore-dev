@@ -283,9 +283,9 @@ function keyDownMenuItemFocused(key) {
         //setTimeout(toggleSideMenu,100); //Close menu
         toggleSideMenu();
         document.getElementById("menuBtn").focus();
-    } else if (key === "ArrowUp" || key == "ArrowLeft") {
+    } else if (key === "ArrowUp") {
         focusPrevMenuItem();
-    } else if (key === "ArrowDown" || key == "ArrowRight") {
+    } else if (key === "ArrowDown") {
         focusNextMenuItem();
     } else if (key === "Home") {
         focusFirstMenuItem();
@@ -363,14 +363,14 @@ function keyDownModeBarFocused(key) {
     if (key =="Enter" || key =="Space") {
       //Switch to mode corresponding to tab with current focus
       switchMode(modes[focusedModeIndex]); 
-    } else if (key =="ArrowRight" || key =="ArrowDown") {
+    } else if (key =="ArrowRight") {
         //shift focus to next mode tab
         document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
         focusedModeIndex = (focusedModeIndex == 3 ? 1 : focusedModeIndex+1);
         newFocusedTab = document.getElementById(modes[focusedModeIndex]);
         newFocusedTab.setAttribute("tabindex","0");
         newFocusedTab.focus();  
-    }  else if (key == "ArrowLeft" || key == "ArrowUp") {
+    }  else if (key == "ArrowLeft") {
         //shift focus to prev mode tab
         document.getElementById(modes[focusedModeIndex]).setAttribute("tabindex","-1");
         focusedModeIndex = (focusedModeIndex == 1 ? 3 : focusedModeIndex-1);

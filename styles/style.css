@@ -85,7 +85,7 @@
 */
 .navbar-btn-icon {
    color: var(--text-color);
-    font-size: 30px;
+    font-size: 36px;
     cursor: pointer;
 }
 
@@ -101,7 +101,7 @@
    It should be text color in a large font.
 */
 .navbar-title {
-    margin: 8px 0px 4px 4px;
+    margin: 14px 0px 14px 4px;
     color: var(--text-color);
     font-size: 26px;  
 }
@@ -112,7 +112,7 @@
 /* .modebar -- Styling for mode bar at the bottom of the page */
 .modebar {
     position: fixed;
-    top: 42px;
+    top: 48px;
     left: 0px;
     width: 100%;
     z-index: 200;
@@ -148,7 +148,7 @@
 
 /* .modebar-text -- Style the text in the bottom bar */
 .modebar-text {
-    font-size: small;
+    font-size: 17px;
     font-variant: small-caps;
 }
 
@@ -260,10 +260,10 @@
    lower right corder of the app as a large circle with a slight shadow. */
    .float-btn {
         position:fixed;
-        width:60px;
-        height:60px;
-        bottom:12px;
-        right:12px;
+        width:80px;
+        height:80px;
+        bottom:16px;
+        right:16px;
         color: var(--text-color);
         background-color: var(--main-color);
         border-radius:50px;
