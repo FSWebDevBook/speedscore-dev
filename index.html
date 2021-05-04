@@ -35,6 +35,41 @@
             </button>  
         </div>
     </header>
+     <!--THE SIDE MENU -->
+     <ul id="sideMenu" role="menu" class="sidemenu sidemenu-closed">
+      <!--FEED MODE MENU ITEMS-->
+      <li id="feedModeMenuPost" class="sidemenu-item feedMode-item" 
+        role="menuitem" tabindex="0">
+        Post to Feed
+      </li>
+      <li id="feedModeMenuFollowOthers" class="sidemenu-item feedMode-item" role="menuitem"
+        role="menuitem" tabindex="0">
+        Follow Others
+      </li>
+      <!--ROUNDS MODE MENU ITEMS -->
+      <li class="sidemenu-item roundsMode-item sidemenu-item-hidden"
+        role="menuitem" tabindex="0" hidden>
+        Log Round
+      </li>
+      <!--COURSES MODE MENU ITEMS -->
+      <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" 
+        role="menuitem" tabindex="0" hidden>
+        Add Course
+      </li>
+      <!--ALWAYS AVAILABLE MENU ITEMS -->
+      <li class="sidemenu-item" 
+        role="menuitem" tabindex="0">
+        Settings
+      </li>
+      <li class="sidemenu-item" 
+        role="menuitem" tabindex="0">
+        About
+      </li>
+      <li class="sidemenu-item" 
+        role="menuitem" tabindex="0">
+        Log Out
+      </li>
+    </ul>
     <main>
     <!-- TOP "MODE" TABS -->
     <div id="modeBar" class="modebar" role="tablist" tabindex="-1" 
@@ -98,41 +133,6 @@
       <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     </main>
-    <!--THE SIDE MENU -->
-    <ul id="sideMenu" role="menu" class="sidemenu sidemenu-closed">
-      <!--FEED MODE MENU ITEMS-->
-      <li id="feedModeMenuPost" class="sidemenu-item feedMode-item" 
-        role="menuitem" tabindex="0">
-        Post to Feed
-      </li>
-      <li id="feedModeMenuFollowOthers" class="sidemenu-item feedMode-item" role="menuitem"
-        role="menuitem" tabindex="0">
-        Follow Others
-      </li>
-      <!--ROUNDS MODE MENU ITEMS -->
-      <li class="sidemenu-item roundsMode-item sidemenu-item-hidden"
-        role="menuitem" tabindex="0" hidden>
-        Log Round
-      </li>
-      <!--COURSES MODE MENU ITEMS -->
-      <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" 
-        role="menuitem" tabindex="0" hidden>
-        Add Course
-      </li>
-      <!--ALWAYS AVAILABLE MENU ITEMS -->
-      <li class="sidemenu-item" 
-        role="menuitem" tabindex="0">
-        Settings
-      </li>
-      <li class="sidemenu-item" 
-        role="menuitem" tabindex="0">
-        About
-      </li>
-      <li class="sidemenu-item" 
-        role="menuitem" tabindex="0">
-        Log Out
-      </li>
-    </ul>
     <!--FLOATING ACTION BUTTON-->
     <button id="floatBtn" class="float-btn" type="button" aria-label="Post to Feed">
       <span class="float-btn-icon fas fa-plus"></span>
