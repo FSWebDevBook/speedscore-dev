@@ -18,6 +18,7 @@
 *************************************************************************/
 :root {
     --main-color: #13294E;
+    --main-red-color: #ff0f00;
     --text-color: white;
     --item-highlight-color: #f0f0f0;                    
     --side-menu-width: 250px;
@@ -34,7 +35,7 @@
     left: 50%;
     padding: 4px;
     position: absolute;
-    transform: translateY(-100%);
+    transform: translateY(-200%);
     transition: transform 0.3s;
     z-index: 200;
 }
@@ -50,14 +51,13 @@
 /* Styling of the fixed navbar bar in the app. Its background
    needs to be the app's main color (--main-color).  */
    .navbar {
-    display: block; /* Occupies its own horizontal space */
+    display: flex; /* Occupies its own horizontal space */
     background-color: var(--main-color);
     position: fixed; /* Doesn't move */
     top: 0px; /* 0px from top-left */
     left: 0px; 
     width: 100%; /* 100% of width of screen */
-    align-content: center;
-    border-radius: 0px;
+    align-items: center;
     z-index: 100; /* Force it to be on top */
 }
 
@@ -74,9 +74,9 @@
    the navbar.
 */
 .navbar-btn {
-    background-color: transparent;
-    border-color: var(--main-color);
-    text-align: center;
+   background-color: transparent;
+   border: none;        
+   text-align: center;
 }
 
 /* navbar-btn-icon styles the navbar button icon. It should be white, in a large
@@ -101,26 +101,28 @@
    It should be text color in a large font.
 */
 .navbar-title {
-    margin-left: 4px;
+    margin: 8px 0px 4px 4px;
     color: var(--text-color);
     font-size: 26px;  
 }
 
 /*************************************************************************
-* CSS CLASSES FOR BOTTOM "MODE" BAR
+* CSS CLASSES FOR TOP "MODE" TABS
 *************************************************************************/
 /* .modebar -- Styling for mode bar at the bottom of the page */
 .modebar {
     position: fixed;
-    bottom: 0px;
+    top: 42px;
     left: 0px;
     width: 100%;
     z-index: 200;
     display: flex;
+    box-sizing: border-box;
 }
     
 /* .modebar button -- Style the buttons inside the bottom bar */
 .modebar button { 
+    width: 20px;
     border: none;
     width: 33.33%;
     text-align: center;
@@ -136,16 +138,7 @@
     color: var(--main-color);
 }
 
-/* .modebar-selected:focus -- The selected mode gets a blue outline when focused */
-.modebar-selected:focus {
-    outline-color: var(--main-color);
-}
-
-/* .modebar-unselected:focus -- Unselected mode buttons get a light
-   outline when focused */
-.modebar-unselected:focus {
-    outline-color: var(--item-highlight-color);
-}
+    
 
 /* .modebar-icon -- Style the icons in the bottom bar */
 .modebar-icon {
@@ -155,20 +148,22 @@
 
 /* .modebar-text -- Style the text in the bottom bar */
 .modebar-text {
-    display:block;
     font-size: small;
+    font-variant: small-caps;
 }
 
 .modebar-selected {
     cursor: default;
-    background-color: var(--item-highlight-color);
-    color: var(--main-color);
+    background-color: var(--main-color);        
+    color: var(--text-color);
+    border-bottom: 4px solid var(--main-red-color) !important;
 }
 
 .modebar-unselected {
     cursor: pointer;
     background-color: var(--main-color);
     color: var(--text-color);
+    border-bottom: none;
 }
 
 .modebar-hidden {
@@ -188,8 +183,8 @@
 .sidemenu {
     height: 100%; /* Menu is full height of window */
     position: fixed; /* Menu stays in place regardless of other content */
-    z-index: 75; /* Force the menu to be near the front */
-    top: 64px; /* Position menu 64 px from top of screen; accomodates top navbar */
+    z-index: 200; /* Force the menu to be near the front */
+    top: 46px; /* Position menu 64 px from top of screen; accomodates top navbar */
     left: 0px; /* Position side menu on left-hand side of screen */
     background-color: var(--main-color); /* Match to main-color */
     color: var(--text-color);
@@ -226,18 +221,14 @@
 }
 
 .sidemenu-item {
+    padding: 24px 0px 24px 24px; /* top, right, bottom, left */
+    font-size: 18px;
+    /* display: flex;
     box-sizing: content-box;
-    padding: 0px; 
+    padding: 0px; */
 }
 
-.sidemenu-item a {
-   padding: 24px 0px 24px 24px; /* top, right, bottom, left */
-   font-size: 18px;
-   display: flex;
-}
-
-
-.sidemenu-item:focus-within, .sidemenu-item:hover {
+.sidemenu-item:focus, .sidemenu-item:hover {
     cursor: pointer;
     background-color: var(--item-highlight-color);
     color: var(--main-color);
@@ -252,7 +243,7 @@
 
 /* Style for current user shown in side menu */
 .sidemenu-userID {
-    white-space: nowrap;
+    white-space: normal;
     width: 75%;
     padding-left: 4px;
     font-size: 20px;
@@ -271,8 +262,8 @@
         position:fixed;
         width:60px;
         height:60px;
-        bottom:60px;
-        right:40px;
+        bottom:12px;
+        right:12px;
         color: var(--text-color);
         background-color: var(--main-color);
         border-radius:50px;

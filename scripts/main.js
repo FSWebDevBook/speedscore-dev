@@ -21,25 +21,10 @@ let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the 
  * previous, and next menu item when the user is using the keyboard to cycle through menu items.
  */
 const modeMenuIndices = {
-    "feedMode": [0,1,4,5], 
-    "roundsMode": [2,4,5], 
-    "coursesMode": [3,4,5]
-};
-
-/* pageToTitle maps the app's page Ids to the corresponding titles to be displayed in
-   the appTitle <h1> element in the app banner. */
-const pageToTitle = {
-    "feedMode": "Activity Feed",
-    "feedModePost": "Post to Feed",
-    "feedModeFollow": "Follow Others",
-    "roundsMode": "My Rounds",
-    "roundsModeLog": "Log Round",
-    "roundsModeEdit": "Edit Round",
-    "coursesMode": "Courses",
-    "coursesModeAdd": "Add Course",
-    "coursesModeEdit": "Edit Course",
-    "loginMode": "Welcome to SpeedScore"
-};
+    "feedMode": [0,1,4,5,6], 
+    "roundsMode": [2,4,5,6], 
+    "coursesMode": [3,4,5,6]
+};  
 
  /* modeToActionBtnLabel maps the app's mode to the aria-label for the
     floating action button in the mode. */
@@ -123,12 +108,10 @@ function switchToModeSubPage(subPage) {
     let newPage = document.getElementById(mode + subPage);
     newPage.style.display = "block";
     newPage.focus();
-    //Set new page title
-    document.getElementById("appTitle").textContent = pageToTitle[mode + subPage];   
 }
 
 /*************************************************************************
- * @function feedModePost CLICK
+ * @function feedModeMenuPost CLICK
  * @desc 
  * When the "Post to Feed" menu item is selected, we switch to "Post to
  * Feed" page to allow the user to make a new feed post. The only option
@@ -136,7 +119,7 @@ function switchToModeSubPage(subPage) {
  * able to tab to other UI sections. Thus, we disable all
  * other UI components.
  *************************************************************************/
-document.getElementById("feedModeItemPost").addEventListener("click",function() {
+document.getElementById("feedModeMenuPost").addEventListener("click",function() {
    switchToModeSubPage("Post");
 });
 
@@ -148,7 +131,7 @@ document.getElementById("feedModeItemPost").addEventListener("click",function() 
 function focusFirstMenuItem() {
     focusedMenuItemIndex = 0;
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].focus();
 }
 
 /*************************************************************************
@@ -159,7 +142,7 @@ function focusFirstMenuItem() {
 function focusLastMenuItem() {
     focusedMenuItemIndex = modeMenuIndices[mode].length - 1;
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
-    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].focus();
 }
 
 /*************************************************************************
@@ -172,7 +155,7 @@ function focusLastMenuItem() {
 function focusPrevMenuItem() {
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
     focusedMenuItemIndex = (focusedMenuItemIndex == 0 ? modeMenuIndices[mode].length-1 : focusedMenuItemIndex - 1);
-    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].focus();
 }
 
 /*************************************************************************
@@ -185,7 +168,7 @@ function focusPrevMenuItem() {
 function focusNextMenuItem() {
     const sideMenuItems = document.getElementsByClassName("sidemenu-item");
     focusedMenuItemIndex = (focusedMenuItemIndex ==  modeMenuIndices[mode].length-1 ? 0 : focusedMenuItemIndex + 1);
-    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].firstElementChild.focus();
+    sideMenuItems[modeMenuIndices[mode][focusedMenuItemIndex]].focus();
 }
 
 /*************************************************************************
@@ -221,8 +204,6 @@ function toggleSideMenu(focusItem)  {
         document.getElementById("floatBtn").style.display = "block";
         //Restore skip link
         document.getElementById("skipLink").style.display = "block";
-        //Restore page title
-        document.getElementById("appTitle").textContent = pageToTitle[mode];
     } else if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
         //Change menu icon and label
         sideMenuIcon.classList.remove("fa-bars");
@@ -348,8 +329,6 @@ function switchMode(newMode) {
     newModeBtn.classList.add("modebar-selected");
     newModeBtn.setAttribute("aria-selected",true);
     newModeBtn.focus();
-    //Change page title
-    document.getElementById("appTitle").textContent = pageToTitle[newMode];
     //Change action button label
     document.getElementById("floatBtn").setAttribute("aria-label",modeToActionBtnLabel[newMode]);
     //Swap out page content

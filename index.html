@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>SpeedScore</title>
@@ -13,116 +14,117 @@
     <!-- The TOP NAVIGATION BAR -->
     <header class="navbar"> 
       <a id="skipLink" class="skip-link" tabindex="0">Skip to content</a>  
-      <div class="navbar-items">
         <button id="menuBtn" type="button" class="navbar-btn" 
           aria-controls="sideMenu" aria-label="Actions"
           aria-haspopup="true" aria-expanded="false">
           <span id="menuBtnIcon" class="navbar-btn-icon fas fa-bars"></span>
         </button>
-        <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo">
-        <h1 id="appTitle" class="navbar-title">Activity Feed</h1>
-      </div>
+        <img src="images/sslogo.png" class="navbar-app-icon" alt="SpeedScore logo: a white golf ball with two red esses inside it">
+        <h1 id="appName" class="navbar-title">SpeedScore</h1>   
     </header>
-    <!--THE SIDE MENU -->
-    <ul id="sideMenu" role="menu" class="sidemenu sidemenu-closed">
-        <!--SIDE MENU TITLE -->
-      <li class="sidemenu-title">
-        <img src="images/ChrisProfilePic.jpg" class="sidemenu-profile-pic"
-          alt="Current user's profile picture">
-        <span class="sidemenu-userID">Chris Hundhausen</span>
-      </li>
-      <!--FEED MODE MENU ITEMS-->
-      <li class="sidemenu-item feedMode-item" role="none">
-        <a id="feedModeItemPost" role="menuitem"  tabindex="-1">Post to Feed</a>
-      </li>
-      <li class="sidemenu-item feedMode-item" role="none">
-        <a role="menuitem" tabindex="-1">Follow Others</a>
-      </li>
-      <!--ROUNDS MODE MENU ITEMS -->
-      <li class="sidemenu-item roundsMode-item sidemenu-item-hidden" role="none">
-        <a role="menuitem" tabindex="-1">Log Round</a>
-      </li>
-      <!--COURSES MODE MENU ITEMS -->
-      <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" role="none">
-        <a role="menuitem" tabindex="-1">Add Course</a>
-      </li>
-      <!--ALWAYS AVAILABLE MENU ITEMS -->
-      <li class="sidemenu-item" role="none">
-        <a role="menuitem" tabindex="-1">About</a>
-      </li>
-      <li class="sidemenu-item" role="none">
-        <a role="menuitem" tabindex="-1">Log Out</a>
-      </li>
-    </ul>
-    <!-- BOTTOM "MODE" BAR -->
+    <main>
+    <!-- TOP "MODE" TABS -->
     <div id="modeBar" class="modebar" role="tablist" tabindex="-1" 
       aria-label="App Modes">
       <button id="feedMode" type="button" class="modebar-btn modebar-selected" 
         role="tab" tabindex="0" aria-selected="true" aria-controls="feedModeMain">
-        <span class="modebar-icon fa fa-th-list"></span>
         <span id="feedSpan" class="modebar-text">Feed</span>
       </button>
       <button id="roundsMode" type="button" class="modebar-btn modebar-unselected" 
         role="tab" tabindex="-1" aria-selected="false" aria-controls="roundsModeMain">
-        <span class="modebar-icon fa fa-history"></span>
         <span id="roundsSpan" class="modebar-text">Rounds</span>
       </button>
       <button id="coursesMode" type="button" class="modebar-btn modebar-unselected" 
         role="tab" tabindex="-1" aria-selected="false" aria-controls="coursesModeMain">
-        <span class="modebar-icon fa fa-flag"></span>
         <span id="coursesSpan" class="modebar-text">Courses</span>
       </button>
     </div>
-    <!--FLOATING ACTION BUTTON-->
-    <button id="floatBtn" class="float-btn" type="button" aria-label="Post to Feed">
-      <span class="float-btn-icon fas fa-plus"></span>
-    </button>
     <!-- LOGIN MODE PAGE -->
-    <div id="loginModePage" tabindex="0" class="app-page login-mode"
-      aria-label="Log In" hidden>
+    <div id="loginModePage" tabindex="0" class="app-page login-mode" hidden>
       <h1 class="app-page-header">Log In Page</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     <!-- FEED MODE PAGES -->
     <div id="feedModeMain" tabindex="0" class="app-page feedMode-page" role="tabpanel">
       <h1 class="app-page-header">Activity Feed</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     <div id="feedModePost" tabindex="0" class="app-page feedMode-page" hidden>
       <h1 class="app-page-header">Post to Feed</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
       <button id="feedModePostBtn" class="app-page-button" type="button">Post to Feed</button>
     </div>
     <div id="feedModeFollow" tabindex="0" class="app-page feedMode-page" hidden>
       <h1 class="app-page-header">Follow Others</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     <!-- ROUNDS MODE PAGES -->
     <div id="roundsModeMain" tabindex="0" class="app-page roundsMode-page" role="tabpanel" hidden>
       <h1 class="app-page-header">My Rounds</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     <div id="roundsModeLog" tabindex="0" class="app-page roundsMode-page" hidden>
       <h1 class="app-page-header">Log New Round</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     <!-- COURSES MODE PAGES -->
     <div id="coursesModeMain" tabindex="0" class="app-page coursesMode-page" role="tabpanel" hidden>
       <h1 class="app-page-header">Courses</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
     <div id="coursesModeAdd" tabindex="0" class="app-page coursesMode-page" hidden>
       <h1 class="app-page-header">Add Course</h1>
       <p class="app-page-content">This page is under construction.</p>
-      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo 2">
+      <img class="app-page-icon" src="images/sslogo2.png" alt="SpeedScore logo: A white golf ball with the words speed score written inside it in a red, stylized font">
     </div>
+    </main>
+    <!--THE SIDE MENU -->
+    <ul id="sideMenu" role="menu" class="sidemenu sidemenu-closed">
+      <!--FEED MODE MENU ITEMS-->
+      <li id="feedModeMenuPost" class="sidemenu-item feedMode-item" 
+        role="menuitem" tabindex="0">
+        Post to Feed
+      </li>
+      <li id="feedModeMenuFollowOthers" class="sidemenu-item feedMode-item" role="menuitem"
+        role="menuitem" tabindex="0">
+        Follow Others
+      </li>
+      <!--ROUNDS MODE MENU ITEMS -->
+      <li class="sidemenu-item roundsMode-item sidemenu-item-hidden"
+        role="menuitem" tabindex="0" hidden>
+        Log Round
+      </li>
+      <!--COURSES MODE MENU ITEMS -->
+      <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" 
+        role="menuitem" tabindex="0" hidden>
+        Add Course
+      </li>
+      <!--ALWAYS AVAILABLE MENU ITEMS -->
+      <li class="sidemenu-item" 
+        role="menuitem" tabindex="0">
+        Settings
+      </li>
+      <li class="sidemenu-item" 
+        role="menuitem" tabindex="0">
+        About
+      </li>
+      <li class="sidemenu-item" 
+        role="menuitem" tabindex="0">
+        Log Out
+      </li>
+    </ul>
+    <!--FLOATING ACTION BUTTON-->
+    <button id="floatBtn" class="float-btn" type="button" aria-label="Post to Feed">
+      <span class="float-btn-icon fas fa-plus"></span>
+    </button>
+    
     <script src="scripts/main.js">
     </script>
   </body>
