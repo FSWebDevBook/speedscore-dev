@@ -63,9 +63,8 @@
 
 /* navbar-items styles items within navbar. They should be centered top-to-bottom
    with a small internal margin */
-   .navbar-items {
-    display: flex; 
-    align-items: center;
+   .navbar-right-items {
+   margin-left: auto;
   }
 
 /* navbar-btn styles the side menu button in the navbar. Its background 
@@ -87,6 +86,12 @@
    color: var(--text-color);
     font-size: 36px;
     cursor: pointer;
+}
+
+.navbar-profile-pic {
+    height: 36px;
+    width: auto;
+    margin-left: 16px;
 }
 
 /* navbar-app-icon styles the SpeedScore app icon in the navbar. 
@@ -112,7 +117,7 @@
 /* .modebar -- Styling for mode bar at the bottom of the page */
 .modebar {
     position: fixed;
-    top: 48px;
+    top: 56px;
     left: 0px;
     width: 100%;
     z-index: 200;
@@ -184,7 +189,7 @@
     height: 100%; /* Menu is full height of window */
     position: fixed; /* Menu stays in place regardless of other content */
     z-index: 200; /* Force the menu to be near the front */
-    top: 46px; /* Position menu 64 px from top of screen; accomodates top navbar */
+    top: 56px; /* Position menu 64 px from top of screen; accomodates top navbar */
     left: 0px; /* Position side menu on left-hand side of screen */
     background-color: var(--main-color); /* Match to main-color */
     color: var(--text-color);

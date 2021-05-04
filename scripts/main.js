@@ -98,7 +98,7 @@ function switchToModeSubPage(subPage) {
     document.getElementById("menuBtnIcon").setAttribute("aria-label","Cancel Post to Feed");
     //Disable bottom mode bar and hide floating action button
     document.getElementById(mode).setAttribute("tabindex","-1");
-    document.getElementById("modeBar").classList.add("modebar-disabled");
+    document.getElementById("modeBar").classList.add("modebar-hidden");
     document.getElementById("floatBtn").style.display = "none";
     //Hide main mode page
     document.getElementById(mode + "Main").style.display = "none";
@@ -198,7 +198,7 @@ function toggleSideMenu(focusItem)  {
         document.getElementById(mode + "Main").style.display = "block";
         sideMenuBtn.focus();
         //Re-enable bottom mode bar buttons
-        document.getElementById("modeBar").classList.remove("modebar-disabled");
+        document.getElementById("modeBar").classList.remove("modebar-hidden");
         document.getElementById(mode).setAttribute("tabindex","0");
         //Restore floating button
         document.getElementById("floatBtn").style.display = "block";
