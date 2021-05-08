@@ -104,6 +104,10 @@ function switchToModeSubPage(subPage) {
     document.getElementById("menuBtnIcon").classList.remove("fa-bars");
     document.getElementById("menuBtnIcon").classList.add("fa-arrow-left");
     document.getElementById("menuBtn").setAttribute("aria-label","Cancel Post to Feed");
+    //Button does not control a menu in this mode. Remove aria properties...
+    document.getElementById("menuBtn").removeAttribute("aria-controls");
+    document.getElementById("menuBtn").removeAttribute("aria-haspopup");
+    document.getElementById("menuBtn").removeAttribute("aria-expanded");
     //Hide mode bar and  floating action button
     document.getElementById("modeBar").style.display="none";
     document.getElementById("floatBtn").style.display="none";
@@ -191,12 +195,16 @@ function toggleSideMenu(focusItem)  {
     const sideMenu = document.getElementById("sideMenu");
     const sideMenuIcon = document.getElementById("menuBtnIcon");
     const sideMenuBtn = document.getElementById("menuBtn");
-    if (sideMenuIcon.classList.contains("fa-arrow-left")) { //EXIT LOCKED
+    if (sideMenuIcon.classList.contains("fa-arrow-left")) { //EXIT SUBMODE PAGE
         //User is clicking left arrow to exit "locked" mode page
         //Restore bars icon
         sideMenuIcon.classList.remove("fa-arrow-left");
         sideMenuIcon.classList.add("fa-bars");
         sideMenuBtn.setAttribute("aria-label","Actions")
+        //Change button's aria attributes so that it knows it's a menu button
+        document.getElementById("menuBtn").setAttribute("aria-controls","sideMenu");
+        document.getElementById("menuBtn").setAttribute("aria-haspopup","true");
+        document.getElementById("menuBtn").setAttribute("aria-expanded","false");
         //Hide current mode page and show main mode page
         let currModePages = document.getElementsByClassName(mode + "-page");
         for (let i = 0; i < currModePages.length; ++i) {
