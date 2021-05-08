@@ -95,15 +95,14 @@ function switchToModeSubPage(subPage) {
     //Switch icon to left arrow
     document.getElementById("menuBtnIcon").classList.remove("fa-bars");
     document.getElementById("menuBtnIcon").classList.add("fa-arrow-left");
-    document.getElementById("menuBtnIcon").setAttribute("aria-label","Cancel Post to Feed");
-    //Disable bottom mode bar and hide floating action button
-    document.getElementById(mode).setAttribute("tabindex","-1");
-    document.getElementById("modeBar").classList.add("modebar-hidden");
-    document.getElementById("floatBtn").style.display = "none";
+    document.getElementById("menuBtn").setAttribute("aria-label","Cancel Post to Feed");
+    //Hide mode bar and  floating action button
+    document.getElementById("modeBar").style.display="none";
+    document.getElementById("floatBtn").style.display="none";
     //Hide main mode page
-    document.getElementById(mode + "Main").style.display = "none";
+    document.getElementById(mode + "Main").style.display="none";
     //Hide skip link
-    document.getElementById("skipLink").style.display = "none";
+    document.getElementById("skipLink").style.display="none";
     //Switch to new page
     let newPage = document.getElementById(mode + subPage);
     newPage.style.display = "block";
@@ -189,21 +188,20 @@ function toggleSideMenu(focusItem)  {
         //Restore bars icon
         sideMenuIcon.classList.remove("fa-arrow-left");
         sideMenuIcon.classList.add("fa-bars");
-        sideMenuIcon.setAttribute("aria-label","Actions")
+        sideMenuBtn.setAttribute("aria-label","Actions")
         //Hide current mode page and show main mode page
         let currModePages = document.getElementsByClassName(mode + "-page");
         for (let i = 0; i < currModePages.length; ++i) {
             currModePages[i].style.display = "none"; //hide
         }
-        document.getElementById(mode + "Main").style.display = "block";
+        document.getElementById(mode + "Main").style.display="block";
         sideMenuBtn.focus();
-        //Re-enable bottom mode bar buttons
-        document.getElementById("modeBar").classList.remove("modebar-hidden");
-        document.getElementById(mode).setAttribute("tabindex","0");
-        //Restore floating button
-        document.getElementById("floatBtn").style.display = "block";
         //Restore skip link
-        document.getElementById("skipLink").style.display = "block";
+        document.getElementById("skipLink").style.display="block"
+        //Restore mode bar buttons
+        document.getElementById("modeBar").style.display="flex";
+        //Restore floating button
+        document.getElementById("floatBtn").style.display="block";
     } else if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
         //Change menu icon and label
         sideMenuIcon.classList.remove("fa-bars");

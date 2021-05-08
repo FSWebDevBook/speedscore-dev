@@ -1,6 +1,32 @@
 /*************************************************************************
 * SPEEDSCORE APP's MAIN STYLESHEET
+* This stylesheet defines the CSS styles that give the SpeedScore app
+* its look and feel. It is divided logically into sections, with each
+* section addressing a specific user interface element or component.
 *************************************************************************/
+
+/*************************************************************************
+* GLOBAL CSS VARIABLES
+* These are global variable definitions for the theme colors and other
+* attributes of the app's visual appearance. They can be easily tweaked.
+*************************************************************************/
+:root {
+    --main-color: #13294E;
+    --main-red-color: #ff0f00;
+    --text-color: white;
+    --item-highlight-color: #f0f0f0;                    
+    --side-menu-width: 250px;
+}
+
+/*************************************************************************
+* GLOBAL CSS CLASSES
+* The following classes have broad scope or can be applied to any element.
+*************************************************************************/
+
+/* This CSS definition gives all focusable items a shadowed blue outline 
+   when they have the focus. This is recommended as a  highly visible 
+   focus technique for keyboard users. 
+*/
 
 *:focus {
     border: 3px solid #94BFF9 !important;
@@ -13,20 +39,13 @@
     border: 0;
   }
 
-/*************************************************************************
-* GLOBAL CSS VARIABLES
-*************************************************************************/
-:root {
-    --main-color: #13294E;
-    --main-red-color: #ff0f00;
-    --text-color: white;
-    --item-highlight-color: #f0f0f0;                    
-    --side-menu-width: 250px;
-}
 
 /*************************************************************************
 * CSS CLASSES FOR SKIP LINK (USED BY SCREEN READERS AND KEYBOARD NAV)
-******************************************************  *******************/
+* A skip link allows keyboard users to quickly skip over an app's 
+* navigation elements to reach its content. It is a best practice for
+* accessibility.
+*************************************************************************/
 .skip-link {
     cursor: pointer;    
     background: var(--main-color);
@@ -48,7 +67,7 @@
 * CSS CLASSES FOR TOP NAVIGATION BAR
 *************************************************************************/
 
-/* Styling of the fixed navbar bar in the app. Its background
+/* Styling of the fixed navbar ("banner") bar in the app. Its background
    needs to be the app's main color (--main-color).  */
    .navbar {
     display: flex; /* Occupies its own horizontal space */
@@ -61,9 +80,9 @@
     z-index: 100; /* Force it to be on top */
 }
 
-/* navbar-items styles items within navbar. They should be centered top-to-bottom
-   with a small internal margin */
-   .navbar-right-items {
+/* navbar-right-items styles items within navbar that should be right-justified.
+*/
+.navbar-right-items {
    margin-left: auto;
   }
 
@@ -88,11 +107,6 @@
     cursor: pointer;
 }
 
-.navbar-profile-pic {
-    height: 36px;
-    width: auto;
-    margin-left: 16px;
-}
 
 /* navbar-app-icon styles the SpeedScore app icon in the navbar. 
    It should be 38 x 38 pixels, with a small right margin so that 
@@ -102,7 +116,7 @@
     height: 38px;
     width: 38px;  
 }
-/* navbar-title styles the navbar's title text. 
+/* navbar-title styles the navbar's title text (the name of the app). 
    It should be text color in a large font.
 */
 .navbar-title {
@@ -111,11 +125,21 @@
     font-size: 26px;  
 }
 
+/* navbar-profile-pic styles the user's profile picture 
+   that appears in the navbar 
+*/
+.navbar-profile-pic {
+    cursor: pointer;
+    height: 46px;
+    width: auto;
+    margin-left: 16px;
+}
+
 /*************************************************************************
 * CSS CLASSES FOR SIDE MENU
 *************************************************************************/
 
-/* sidemenu -- Styling of the side menu */
+/* sidemenu -- Styles the side menu */
 .sidemenu {
     height: 100%; /* Menu is full height of window */
     position: fixed; /* Menu stays in place regardless of other content */
@@ -143,19 +167,14 @@
     width: 0px;
 }
 
-/* Style for side menu title */   
-.sidemenu-title {
-    border-bottom: 2px solid var(--text-color);
-    display: flex;
-    align-items: center;
-}
-
+/* sidemenu ul -- Styles the ul element used for the side menu items. */
 .sidemenu ul {
     list-style-type: none; /* Remove bullets */
     padding: 0;
     margin: 0;
 }
 
+/* sidemenu-item -- Styles items in the side menu. */
 .sidemenu-item {
     padding: 24px 0px 24px 24px; /* top, right, bottom, left */
     font-size: 18px;
@@ -247,15 +266,6 @@
     background-color: var(--main-color);
     color: var(--text-color);
     border-bottom: none;
-}
-
-.modebar-hidden {
-    display: none;
-}
-
-.modebar-disabled {
-    pointer-events: none;
-    opacity: 0.4;
 }
 
 /*************************************************************************
