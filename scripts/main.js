@@ -39,6 +39,14 @@ let focusedMenuItemIndex = 0; //the index of the current mode's menu item that h
                     //provides an index into the arrays in the modeMenuIndices object.
                     //Think of it as a "pointer to a pointer."
 
+
+document.addEventListener("click",function(e) {
+    if (document.getElementById("menuBtnIcon").classList.contains("fa-times")) {
+       toggleSideMenu();
+    }
+});
+
+
 /*************************************************************************
  * SKIP LINK
  * The "skip link" is an accessbility feature that allows the user to 
@@ -217,6 +225,11 @@ function toggleSideMenu(focusItem)  {
         } else if (focusItem == "first") { //set focus to first item
             focusFirstMenuItem();
         }
+        //Disable mode bar and buttons
+        document.getElementById("modeBar").classList.add("element-disabled");
+        document.getElementById("floatBtn").classList.add("element-disabled");
+        document.getElementById("searchBtn").classList.add("element-disabled");
+        document.getElementById("profileBtn").classList.add("element-disabled");
         //Otherwise, user clicked with mouse so we do need to set focus.
     } else { //CLOSE MENU
         //Change menu icon
@@ -227,6 +240,11 @@ function toggleSideMenu(focusItem)  {
         sideMenu.classList.remove("sidemenu-open");
         sideMenu.classList.add("sidemenu-closed");
         sideMenuBtn.setAttribute("aria-expanded","false");
+        //Re-enable mode bar and buttons
+        document.getElementById("modeBar").classList.remove("element-disabled");
+        document.getElementById("floatBtn").classList.remove("element-disabled");
+        document.getElementById("searchBtn").classList.remove("element-disabled");
+        document.getElementById("profileBtn").classList.remove("element-disabled");
     }
 }
 
@@ -237,8 +255,10 @@ function toggleSideMenu(focusItem)  {
  * When the user clicks the menuBtn, open or close the side menu 
  * based on current menu state. Remapped to toggleSideMenu
  *************************************************************************/
- document.getElementById("menuBtn").addEventListener("click", (e) => toggleSideMenu("first"));
-
+ document.getElementById("menuBtn").addEventListener("click", function (e) {
+     toggleSideMenu("first");
+     e.stopPropagation();
+ });
 
 
 /*************************************************************************

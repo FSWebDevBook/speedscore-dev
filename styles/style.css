@@ -39,6 +39,11 @@
     border: 0;
   }
 
+/* element-disabled -- disables an element containing a clickable item such as a button */
+  .element-disabled {
+    pointer-events: none; 
+    opacity: 0.4;
+}
 
 /*************************************************************************
 * CSS CLASSES FOR SKIP LINK (USED BY SCREEN READERS AND KEYBOARD NAV)
@@ -232,15 +237,7 @@
     padding-bottom: 6px;
     font-size: 17px;
     text-decoration: none;
-}
-
-/* .modebar button:hover -- Highlight modebar buttons when hovered over */
-.modebar button:hover {
-    background-color: var(--item-highlight-color);
-    color: var(--main-color);
-}
-
-    
+}   
 
 /* .modebar-icon -- Style the icons in the bottom bar */
 .modebar-icon {
@@ -286,11 +283,9 @@
         box-shadow: 2px 2px 3px #999;
 }
 
-/* float-btn:hover -- When menu item is hovered over, highlight it 
-   with light gray background and blue text */
+/* float-btn:hover -- When float button is hovered, change cursor to pointer */
 .float-btn:hover {
-    background-color: var(--item-highlight-color);
-    color: var(--main-color);
+   cursor: pointer;
 }
 
 /*************************************************************************
