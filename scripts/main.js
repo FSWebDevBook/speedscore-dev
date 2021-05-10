@@ -39,7 +39,12 @@ let focusedMenuItemIndex = 0; //the index of the current mode's menu item that h
                     //provides an index into the arrays in the modeMenuIndices object.
                     //Think of it as a "pointer to a pointer."
 
-
+/*************************************************************************
+ * @function DOCUMENT click
+ * @description
+ * When the user clicks anywhere in the app and the menu is open, close
+ * the menu.
+ *************************************************************************/
 document.addEventListener("click",function(e) {
     if (document.getElementById("menuBtnIcon").classList.contains("fa-times")) {
        toggleSideMenu();
@@ -253,6 +258,8 @@ function toggleSideMenu(focusItem)  {
         document.getElementById("floatBtn").classList.remove("element-disabled");
         document.getElementById("searchBtn").classList.remove("element-disabled");
         document.getElementById("profileBtn").classList.remove("element-disabled");
+        //Refocus on the menu button
+        sideMenuBtn.focus();
     }
 }
 
