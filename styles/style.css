@@ -40,9 +40,14 @@
   }
 
 /* element-disabled -- disables an element containing a clickable item such as a button */
-  .element-disabled {
+  .disabled {
     pointer-events: none; 
     opacity: 0.4;
+}
+
+/* hidden -- hides an element */
+.hidden {
+    display: none;
 }
 
 /*************************************************************************
@@ -291,7 +296,7 @@
 /*************************************************************************
 * CSS CLASSES FOR APP CONTENT PAGES
 *************************************************************************/
-.app-page {
+.app-tab {
     padding-top: 70px;
 }
 
@@ -328,4 +333,9 @@
     display: block;
     color: var(--text-color);
     background-color: var(--main-color);
+    cursor: pointer;
+}
+
+button:disabled {
+    pointer-events: none;
 }

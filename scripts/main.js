@@ -12,6 +12,7 @@
 *************************************************************************/
 
 let mode = "feedMode"; //The app's current mode
+let subPage = ""; //The current mode subpage, if any
 let modes = ["loginMode","feedMode","roundsMode","coursesMode"];
 let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the focus
 const mobileWidthThreshold = 768; //Assume a mobile device has a width of < 768 pixels  
@@ -26,14 +27,6 @@ const modeMenuIndices = {
     "roundsMode": [2,4,5,6], 
     "coursesMode": [3,4,5,6]
 };  
-
- /* modeToActionBtnLabel maps the app's mode to the aria-label for the
-    floating action button in the mode. */
-const modeToActionBtnLabel = {
-    "feedMode": "Post to Feed",
-    "roundsMode": "Log Round",
-    "coursesMode": "Add Course"
-}
 
 let focusedMenuItemIndex = 0; //the index of the current mode's menu item that has the focus. Index 0
                     //is the first item, 1 is the second item, and so forth. focusedMenuItemIndex 
@@ -79,7 +72,7 @@ function isMobile() {
  * mode's content page.
  *************************************************************************/
 document.getElementById("skipLink").addEventListener("click",function() {
-    document.getElementById(mode + "Main").focus();
+    document.getElementById(mode + "Tab").focus();
 });
 
 /*************************************************************************
@@ -102,8 +95,6 @@ function keyDownSkipLinkFocused(key) {
  * specification for implementing the accessible keyboard interface:
  * https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-actions.html
 *************************************************************************/   
-
-
 function switchToModeMainPage() {
     const sideMenuIcon = document.getElementById("menuBtnIcon");
     const sideMenuBtn = document.getElementById("menuBtn");
@@ -118,20 +109,24 @@ function switchToModeMainPage() {
         sideMenuBtn.setAttribute("aria-expanded","false");
     } else { //desktop mode -- re-enable menu button
         sideMenuBtn.disabled = false;
+        sideMenuBtn.classList.remove("disabled");
+        document.getElementById(mode + subPage + "CancelBtn").style.display = "none";
     }
     //Hide current mode page and show main mode page
-    let currModePages = document.getElementsByClassName(mode + "-page");
-    for (let i = 0; i < currModePages.length; ++i) {
-        currModePages[i].style.display = "none"; //hide
-    }
-    document.getElementById(mode + "Main").style.display="block";
+    document.getElementById(mode + subPage).style.display = "none";
+    document.getElementById(mode + "Main").style.display = "block";
     sideMenuBtn.focus();
     //Restore skip link
-    document.getElementById("skipLink").style.display="block"
+    document.getElementById("skipLink").style.display="block";
+    //Restore search and profile buttons
+    document.getElementById("searchBtn").classList.remove("disabled");
+    document.getElementById("searchBtn").disabled = false;
+    document.getElementById("profileBtn").classList.remove("disabled");
+    document.getElementById("profileBtn").disabled = false;
     //Restore mode bar buttons
-    document.getElementById("modeBar").style.display="flex";
+    document.getElementById("modeBar").style.display = "flex";
     //Restore floating button
-    document.getElementById("floatBtn").style.display="block";
+    document.getElementById(mode + "ActionBtn").style.display = "block";
 }
 
 /*************************************************************************
@@ -142,12 +137,13 @@ function switchToModeMainPage() {
  * same for all menu items. The respnsive design accommodate two modes:
  * mobile and desktop. If mobile, we replace menu btn icon with back arrow.
  * Otherwise, we keep menu and show cancel button on page.
- * @param submode indicates the name of the submode. We can obtain the
+ * @param sPage indicates the name of the sub page. We can obtain the
  * id of the corresponding <div> element using string 
  * concatenation: mode + subPage
  *************************************************************************/
-function switchToModeSubPage(subPage) {
+function switchToModeSubPage(subM) {
     toggleSideMenu(); //close the menu
+    subPage = subM;
     if (isMobile()) {
         //Change menu icon to back arrow
         document.getElementById("menuBtnIcon").classList.remove("fa-bars");
@@ -158,29 +154,26 @@ function switchToModeSubPage(subPage) {
         document.getElementById("menuBtn").removeAttribute("aria-haspopup");
         document.getElementById("menuBtn").removeAttribute("aria-expanded");
         const cancelBtns = document.getElementsByClassName("app-page-cancel-btn");
-        //In mobile mode, we hide cancel buttons; the back arrow is used instead
-        for (let i = 0; i < cancelBtns.length; ++i) {
-            cancelBtns[i].style.display = "none";
-        }
     } else { //temporarily disable menu button
+        document.getElementById("menuBtn").classList.add("disabled");
         document.getElementById("menuBtn").disabled = true;
-        //Show cancel button
-        const cancelBtns = document.getElementsByClassName("app-page-cancel-btn");
-        for (let i = 0; i < cancelBtns.length; ++i) {
-            cancelBtns[i].style.display = "block";
-        }
+        //Show cancel button for current subPage
+        document.getElementById(mode + subPage + "CancelBtn").style.display = "block";
     }
-    //Hide mode bar and  floating action button
+    //Hide mode bar, floating action button
     document.getElementById("modeBar").style.display="none";
-    document.getElementById("floatBtn").style.display="none";
-    //Hide main mode page
-    document.getElementById(mode + "Main").style.display="none";
+    document.getElementById(mode + "ActionBtn").style.display="none";
+    //Disable Search and Settings buttons
+    document.getElementById("searchBtn").classList.add("disabled");
+    document.getElementById("searchBtn").disabled = true;
+    document.getElementById("profileBtn").classList.add("disabled");
+    document.getElementById("profileBtn").disabled = true;
     //Hide skip link
     document.getElementById("skipLink").style.display="none";
     //Switch to new page
-    let newPage = document.getElementById(mode + subPage);
-    newPage.style.display = "block";
-    newPage.focus();
+    document.getElementById(mode + "Main").style.display="none";
+    document.getElementById(mode + subPage).style.display = "block";
+    document.getElementById(mode + "Tab").focus();
 }
 
 /*************************************************************************
@@ -275,10 +268,16 @@ function toggleSideMenu(focusItem)  {
             focusFirstMenuItem();
         }
         //Disable mode bar and buttons
-        document.getElementById("modeBar").classList.add("element-disabled");
-        document.getElementById("floatBtn").classList.add("element-disabled");
-        document.getElementById("searchBtn").classList.add("element-disabled");
-        document.getElementById("profileBtn").classList.add("element-disabled");
+        document.getElementById("modeBar").classList.add("disabled");
+        document.getElementById("feedMode").disabled = true;
+        document.getElementById("roundsMode").disabled = true;
+        document.getElementById("coursesMode").disabled = true;
+        document.getElementById(mode + "ActionBtn").classList.add("disabled");
+        document.getElementById(mode + "ActionBtn").disabled = true;
+        document.getElementById("searchBtn").classList.add("disabled");
+        document.getElementById("searchBtn").disabled = true;
+        document.getElementById("profileBtn").classList.add("disabled");
+        document.getElementById("profileBtn").disabled = true;
         //Otherwise, user clicked with mouse so we do need to set focus.
     } else { //CLOSE MENU
         //Change menu icon
@@ -290,15 +289,20 @@ function toggleSideMenu(focusItem)  {
         sideMenu.classList.add("sidemenu-closed");
         sideMenuBtn.setAttribute("aria-expanded","false");
         //Re-enable mode bar and buttons
-        document.getElementById("modeBar").classList.remove("element-disabled");
-        document.getElementById("floatBtn").classList.remove("element-disabled");
-        document.getElementById("searchBtn").classList.remove("element-disabled");
-        document.getElementById("profileBtn").classList.remove("element-disabled");
+        document.getElementById("modeBar").classList.remove("disabled");
+        document.getElementById("feedMode").disabled = false;
+        document.getElementById("roundsMode").disabled = false;
+        document.getElementById("coursesMode").disabled = false;
+        document.getElementById(mode + "ActionBtn").classList.remove("disabled");
+        document.getElementById(mode + "ActionBtn").disabled = false;
+        document.getElementById("searchBtn").classList.remove("disabled");
+        document.getElementById("searchBtn").disabled = false;
+        document.getElementById("profileBtn").classList.remove("disabled");
+        document.getElementById("profileBtn").disabled = false;
         //Refocus on the menu button
         sideMenuBtn.focus();
     }
 }
-
 
 /*************************************************************************
  * @function menuBtn click handler
@@ -398,11 +402,12 @@ function switchMode(newMode) {
     newModeBtn.classList.add("modebar-selected");
     newModeBtn.setAttribute("aria-selected",true);
     newModeBtn.focus();
-    //Change action button label
-    document.getElementById("floatBtn").setAttribute("aria-label",modeToActionBtnLabel[newMode]);
+    //Change action button
+    document.getElementById(mode + "ActionBtn").style.display = "none";
+    document.getElementById(newMode + "ActionBtn").style.display = "block";
     //Swap out page content
-    document.getElementById(mode + "Main").style.display = "none";
-    document.getElementById(newMode + "Main").style.display = "block";
+    document.getElementById(mode + "Tab").style.display = "none";
+    document.getElementById(newMode + "Tab").style.display = "block";
     //Change menu items
     let oldItems = document.getElementsByClassName(mode + "-item");
     let newItems = document.getElementsByClassName(newMode + "-item");
@@ -473,17 +478,6 @@ const bottomBtns = document.getElementsByClassName("modebar-btn");
 for (let i = 0; i < bottomBtns.length; ++i) {
     bottomBtns[i].addEventListener("click",() => switchMode(bottomBtns[i].id));
 }
-
-/*************************************************************************
- * FLOATING ACTION BUTTON INTERACTION
- * The following functions implement the functionality of the floating
- * action button. This is just a button, so making the button 
- * accessible involves allowing the user to type Enter or Space when
- * the button is focused.
-*************************************************************************/
-document.getElementById("floatBtn").addEventListener("click",function() {
-    alert("Floating action button clicked.");
-});
 
 function keyDownFloatingBtn(key) {
     if (key=="Enter" || key=="Space") {
@@ -559,7 +553,7 @@ document.getElementById("feedModePostBtn").addEventListener("click",function() {
  * When the user presses the button to cancel a new feed post, we will
  * backs out of the "Post to Feed" mode subpage.
  *************************************************************************/
- document.getElementById("feedModeCancelBtn").addEventListener("click",function() {
+ document.getElementById("feedModePostCancelBtn").addEventListener("click",function() {
     switchToModeMainPage();
 });
 
