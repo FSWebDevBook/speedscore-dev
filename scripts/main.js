@@ -14,6 +14,7 @@
 let mode = "feedMode"; //The app's current mode
 let modes = ["loginMode","feedMode","roundsMode","coursesMode"];
 let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the focus
+const mobileWidthThreshold = 768; //Assume a mobile device has a width of < 768 pixels  
 
 /* modeMenuIndices provides the sequence of actual indices into the  "sidemenu-item" DOM element
  * (an unordered list) for each mode. Since the menu items dynamically change based on the mode, 
@@ -51,6 +52,17 @@ document.addEventListener("click",function(e) {
     }
 });
 
+/*************************************************************************
+ * @function isMobile
+ * @description
+ * Returns true if the current window viewport size suggests user is using
+ * a mobile device, false otherwise.
+ *************************************************************************/
+function isMobile() {
+    const width = window.innerWidth;
+    return (window.innerWidth <= mobileWidthThreshold);
+}
+
 
 /*************************************************************************
  * SKIP LINK
@@ -82,7 +94,6 @@ function keyDownSkipLinkFocused(key) {
     }
  }
 
-
 /*************************************************************************
  * SIDE MENU INTERACTION
  * The following functions implement the functionality of the side menu
@@ -93,26 +104,72 @@ function keyDownSkipLinkFocused(key) {
 *************************************************************************/   
 
 
+function switchToModeMainPage() {
+    const sideMenuIcon = document.getElementById("menuBtnIcon");
+    const sideMenuBtn = document.getElementById("menuBtn");
+    if (sideMenuIcon.classList.contains("fa-arrow-left")) {
+        //Mobile mode -- restore menu button
+        sideMenuIcon.classList.remove("fa-arrow-left");
+        sideMenuIcon.classList.add("fa-bars");
+        sideMenuBtn.setAttribute("aria-label","Actions")
+        //Change button's aria attributes so that it knows it's a menu button
+        sideMenuBtn.setAttribute("aria-controls","sideMenu");
+        sideMenuBtn.setAttribute("aria-haspopup","true");
+        sideMenuBtn.setAttribute("aria-expanded","false");
+    } else { //desktop mode -- re-enable menu button
+        sideMenuBtn.disabled = false;
+    }
+    //Hide current mode page and show main mode page
+    let currModePages = document.getElementsByClassName(mode + "-page");
+    for (let i = 0; i < currModePages.length; ++i) {
+        currModePages[i].style.display = "none"; //hide
+    }
+    document.getElementById(mode + "Main").style.display="block";
+    sideMenuBtn.focus();
+    //Restore skip link
+    document.getElementById("skipLink").style.display="block"
+    //Restore mode bar buttons
+    document.getElementById("modeBar").style.display="flex";
+    //Restore floating button
+    document.getElementById("floatBtn").style.display="block";
+}
+
 /*************************************************************************
  * @function switchToModeSubPage
  * @desc 
  * When a menu item is clicked, we need to switch to the corresponding
  * submenu page. The user interface changes for such a switch are the
- * same for all menu items. 
+ * same for all menu items. The respnsive design accommodate two modes:
+ * mobile and desktop. If mobile, we replace menu btn icon with back arrow.
+ * Otherwise, we keep menu and show cancel button on page.
  * @param submode indicates the name of the submode. We can obtain the
  * id of the corresponding <div> element using string 
  * concatenation: mode + subPage
  *************************************************************************/
 function switchToModeSubPage(subPage) {
     toggleSideMenu(); //close the menu
-    //Switch icon to left arrow
-    document.getElementById("menuBtnIcon").classList.remove("fa-bars");
-    document.getElementById("menuBtnIcon").classList.add("fa-arrow-left");
-    document.getElementById("menuBtn").setAttribute("aria-label","Cancel Post to Feed");
-    //Button does not control a menu in this mode. Remove aria properties...
-    document.getElementById("menuBtn").removeAttribute("aria-controls");
-    document.getElementById("menuBtn").removeAttribute("aria-haspopup");
-    document.getElementById("menuBtn").removeAttribute("aria-expanded");
+    if (isMobile()) {
+        //Change menu icon to back arrow
+        document.getElementById("menuBtnIcon").classList.remove("fa-bars");
+        document.getElementById("menuBtnIcon").classList.add("fa-arrow-left");
+        document.getElementById("menuBtn").setAttribute("aria-label","Back");
+        //Button no longer controls the menu. Remove aria properties...
+        document.getElementById("menuBtn").removeAttribute("aria-controls");
+        document.getElementById("menuBtn").removeAttribute("aria-haspopup");
+        document.getElementById("menuBtn").removeAttribute("aria-expanded");
+        const cancelBtns = document.getElementsByClassName("app-page-cancel-btn");
+        //In mobile mode, we hide cancel buttons; the back arrow is used instead
+        for (let i = 0; i < cancelBtns.length; ++i) {
+            cancelBtns[i].style.display = "none";
+        }
+    } else { //temporarily disable menu button
+        document.getElementById("menuBtn").disabled = true;
+        //Show cancel button
+        const cancelBtns = document.getElementsByClassName("app-page-cancel-btn");
+        for (let i = 0; i < cancelBtns.length; ++i) {
+            cancelBtns[i].style.display = "block";
+        }
+    }
     //Hide mode bar and  floating action button
     document.getElementById("modeBar").style.display="none";
     document.getElementById("floatBtn").style.display="none";
@@ -200,34 +257,13 @@ function toggleSideMenu(focusItem)  {
     const sideMenu = document.getElementById("sideMenu");
     const sideMenuIcon = document.getElementById("menuBtnIcon");
     const sideMenuBtn = document.getElementById("menuBtn");
-    if (sideMenuIcon.classList.contains("fa-arrow-left")) { //EXIT SUBMODE PAGE
-        //User is clicking left arrow to exit "locked" mode page
-        //Restore bars icon
-        sideMenuIcon.classList.remove("fa-arrow-left");
-        sideMenuIcon.classList.add("fa-bars");
-        sideMenuBtn.setAttribute("aria-label","Actions")
-        //Change button's aria attributes so that it knows it's a menu button
-        document.getElementById("menuBtn").setAttribute("aria-controls","sideMenu");
-        document.getElementById("menuBtn").setAttribute("aria-haspopup","true");
-        document.getElementById("menuBtn").setAttribute("aria-expanded","false");
-        //Hide current mode page and show main mode page
-        let currModePages = document.getElementsByClassName(mode + "-page");
-        for (let i = 0; i < currModePages.length; ++i) {
-            currModePages[i].style.display = "none"; //hide
-        }
-        document.getElementById(mode + "Main").style.display="block";
-        sideMenuBtn.focus();
-        //Restore skip link
-        document.getElementById("skipLink").style.display="block"
-        //Restore mode bar buttons
-        document.getElementById("modeBar").style.display="flex";
-        //Restore floating button
-        document.getElementById("floatBtn").style.display="block";
+    if (sideMenuIcon.classList.contains("fa-arrow-left")) { 
+        switchToModeMainPage();
     } else if (sideMenuIcon.classList.contains("fa-bars")) { //OPEN MENU
-        //Change menu icon and label
+        //Open menu
+        //Toggle menu icon
         sideMenuIcon.classList.remove("fa-bars");
         sideMenuIcon.classList.add("fa-times");
-        sideMenuIcon.setAttribute("aria-label","Close")
         //Open menu
         sideMenu.classList.remove("sidemenu-closed");
         sideMenu.classList.add("sidemenu-open");
@@ -514,8 +550,18 @@ function keyDownFloatingBtn(key) {
  * backs out of the "Post to Feed" mode subpage to demonstrate the idea.
  *************************************************************************/
 document.getElementById("feedModePostBtn").addEventListener("click",function() {
-    document.getElementById("menuBtn").click();
-})
+    switchToModeMainPage();
+});
+
+/*************************************************************************
+ * @function feedModePostBtn click handler
+ * @desc 
+ * When the user presses the button to cancel a new feed post, we will
+ * backs out of the "Post to Feed" mode subpage.
+ *************************************************************************/
+ document.getElementById("feedModeCancelBtn").addEventListener("click",function() {
+    switchToModeMainPage();
+});
 
 /*************************************************************************
  * @function keyDownFeedModeBtnFocused
