@@ -110,7 +110,6 @@ function switchToModeMainPage() {
     } else { //desktop mode -- re-enable menu button
         sideMenuBtn.disabled = false;
         sideMenuBtn.classList.remove("disabled");
-        document.getElementById(mode + subPage + "CancelBtn").style.display = "none";
     }
     //Hide current mode page and show main mode page
     document.getElementById(mode + subPage).style.display = "none";
@@ -153,7 +152,7 @@ function switchToModeSubPage(subM) {
         document.getElementById("menuBtn").removeAttribute("aria-controls");
         document.getElementById("menuBtn").removeAttribute("aria-haspopup");
         document.getElementById("menuBtn").removeAttribute("aria-expanded");
-        const cancelBtns = document.getElementsByClassName("app-page-cancel-btn");
+        document.getElementById(mode + subPage + "CancelBtn").style.display = "none";
     } else { //temporarily disable menu button
         document.getElementById("menuBtn").classList.add("disabled");
         document.getElementById("menuBtn").disabled = true;
