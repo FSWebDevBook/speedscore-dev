@@ -221,8 +221,8 @@
 /*************************************************************************
 * CSS CLASSES FOR TOP "MODE" TABS
 *************************************************************************/
-/* .modebar -- Styling for mode bar at the bottom of the page */
-.modebar {
+/* .modetab -- Style the container enclosing the mode tabs */
+.modetab-container {
     position: fixed;
     top: 56px;
     left: 0px;
@@ -232,8 +232,9 @@
     box-sizing: border-box;
 }
     
-/* .modebar button -- Style the buttons inside the bottom bar */
-.modebar button { 
+/* .modetab-container button -- 
+Style the mode buttons (tabs) inside the modetab container */
+.modetab-container button { 
     width: 20px;
     border: none;
     width: 33.33%;
@@ -244,26 +245,26 @@
     text-decoration: none;
 }   
 
-/* .modebar-icon -- Style the icons in the bottom bar */
-.modebar-icon {
+/* .modetab-icon -- Style the icons in the mode tabs */
+.modetab-icon {
     display:block;
     padding-top:3px;
 }
 
-/* .modebar-text -- Style the text in the bottom bar */
-.modebar-text {
+/* .modetab-text -- Style the text in the mode tabs */
+.modetab-text {
     font-size: 17px;
     font-variant: small-caps;
 }
 
-.modebar-selected {
+.modetab-selected {
     cursor: default;
     background-color: var(--main-color);        
     color: var(--text-color);
     border-bottom: 4px solid var(--main-red-color) !important;
 }
 
-.modebar-unselected {
+.modetab-unselected {
     cursor: pointer;
     background-color: var(--main-color);
     color: var(--text-color);
@@ -294,23 +295,23 @@
 }
 
 /*************************************************************************
-* CSS CLASSES FOR APP CONTENT PAGES
+* CSS CLASSES FOR MODE TABS AND PAGES
 *************************************************************************/
-.app-tab {
+.mode-tab {
     padding-top: 70px;
 }
 
-.app-page-header {
+.mode-page-header {
     text-align: center;
     font-size: 48px;
 }
 
-.app-page-content {
+.mode-page-content {
     text-align: center;
     font-size: 24px;
 }
 
-.app-page-icon {
+.mode-page-icon {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -318,14 +319,14 @@
     width: 200px;
 }
 
-.app-page-btn-container {
+.mode-page-btn-container {
     display: flex;
     justify-content: center;
     margin: auto;
     width: 25%;  
 }
 
-.app-page-btn {
+.mode-page-btn {
     display: inline;
     font-size: 18px;
     margin-left: auto;
