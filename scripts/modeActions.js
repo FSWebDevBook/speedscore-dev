@@ -15,20 +15,6 @@
 *************************************************************************/
 
 /*************************************************************************
- * @function feedModeMenuPost CLICK
- * @desc 
- * When the "Post to Feed" menu item is selected, we switch to "Post to
- * Feed" page to allow the user to make a new feed post. The only option
- * here is to make the post or cancel out of it; the user should not be
- * able to tab to other UI sections. Thus, we disable all
- * other UI components.
- *************************************************************************/
- document.getElementById("feedModeMenuPost").addEventListener("click",function() {
-    switchToModeSubPage("Post");
- });
-
-
-/*************************************************************************
  * @function feedModeDisplayFeed
  * @desc 
  * This function should be called when the user switches to the main page
@@ -48,7 +34,6 @@
     //TO DO: Add code to display "Post to Feed" form
 }
 
-
 /*************************************************************************
  * @function feedModePostToFeed
  * @desc 
@@ -61,26 +46,6 @@ function feedModePostToFeed() {
     //TO DO: Add code to post to the feed.
     switchToModeMainPage();
 }
-
-/*************************************************************************
- * @function feedModePostBtn click handler
- * @desc 
- * When the user clicks the "Post to Feed" button, we call the 
- * feedModePostToFeed function.
- *************************************************************************/
-document.getElementById("feedModePostBtn").addEventListener("click",function() {
-    feedModePostToFeed();
-});
-
-/*************************************************************************
- * @function feedModePostCancelBtn click handler
- * @desc 
- * When the user clicks the "Cancel" button to cancel a new feed post, we 
- * close the "Post to Feed" mode subpage and redisplay the main mode page.
- *************************************************************************/
- document.getElementById("feedModePostCancelBtn").addEventListener("click",function() {
-    switchToModeMainPage();
-});
 
 /*************************************************************************
  * @function feedModeDisplayFollowUsersForm
@@ -120,9 +85,55 @@ function feedModeFollowUsers() {
  * Since the user may want to add multiple users to their "followed" 
  * list, we stay in this mod after each operation.
  *************************************************************************/
- function feedModeFollowUsers() {
-    //TO DO: Add code to follow selected user(s);
+ function feedModeUnfollowUsers() {
+    //TO DO: Add code to unfollow selected user(s);
 } 
+
+/*************************************************************************
+ * @function feedModeMenuPost CLICK
+ * @desc 
+ * When the "Post to Feed" menu item is selected, we switch to "Post to
+ * Feed" page to allow the user to make a new feed post. The only option
+ * here is to make the post or cancel out of it; the user should not be
+ * able to tab to other UI sections. Thus, we disable all
+ * other UI components.
+ *************************************************************************/
+ document.getElementById("feedModeMenuPost").addEventListener("click",function() {
+    switchToModePage("Post");
+ });
+
+/*************************************************************************
+ * @function feedModePostBtn click handler
+ * @desc 
+ * When the user clicks the "Post to Feed" button, we call the 
+ * feedModePostToFeed function.
+ *************************************************************************/
+document.getElementById("feedModePostBtn").addEventListener("click",function() {
+    feedModePostToFeed();
+});
+
+/*************************************************************************
+ * @function feedModePostCancelBtn click handler
+ * @desc 
+ * When the user clicks the "Cancel" button to cancel a new feed post, we 
+ * close the "Post to Feed" mode page and redisplay the main mode page.
+ *************************************************************************/
+ document.getElementById("feedModePostCancelBtn").addEventListener("click",function() {
+    switchToModeMainPage();
+});
+
+/*************************************************************************
+ * @function feedModeMenuFollow CLICK
+ * @desc 
+ * When the "Post to Feed" menu item is selected, we switch to "Post to
+ * Feed" page to allow the user to make a new feed post. The only option
+ * here is to make the post or cancel out of it; the user should not be
+ * able to tab to other UI sections. Thus, we disable all
+ * other UI components.
+ *************************************************************************/
+ document.getElementById("feedModeMenuFollow").addEventListener("click",function() {
+    switchToModePage("Follow");
+ });
 
 /*************************************************************************
  * @function feedModeFollowBtn CLICK
@@ -131,30 +142,31 @@ function feedModeFollowUsers() {
  * we call upon feedModeFollowSelectedUsers to add the selected users to
  * the user's "followed" list.
  *************************************************************************/
-document.getElementById("feedModeFollowBtn").addEventListener("click",function() {
-  feedModeFollowUsers();
-});
-
+ document.getElementById("feedModeFollowBtn").addEventListener("click",function() {
+    feedModeFollowUsers();
+  });
+  
 /*************************************************************************
- * @function feedModeFollowBtn CLICK
- * @desc 
- * When the user selects one or more users and clicks the "Unfollow" button,
- * we call upon feedModeUnfollowSelectedUsers to remove the selected users
- * from the user's "followed" list.
- *************************************************************************/
-document.getElementById("feedModeUnfollowBtn").addEventListener("click",function() {
-    feedModeUnfollowUsers()
-});
-
-/*************************************************************************
- * @function feedModeBackBtn CLICK
+ * @function feedModeFollowCancelBtn CLICK
  * @desc 
  * When the user clicks the "Back to Feed" button, we switch back to the
  * main Feed page.
  *************************************************************************/
-document.getElementById("feedModeBackToFeed").addEventListener("click",function() {
+document.getElementById("feedModeFollowCancelBtn").addEventListener("click",function() {
     switchToModeMainPage();
 });
+
+/*************************************************************************
+ * @function feedModeActionBtn CLICK
+ * @desc 
+ * When the floating action button in Feed Mode is clicked, 
+ * we switch to "Post to Feed" page to allow the user to make a new feed post. 
+ * This is the "default" action in Feed Mode
+ *************************************************************************/
+ document.getElementById("feedModeActionBtn").addEventListener("click",function() {
+    switchToModePage("Post");
+ });
+
 
 /*************************************************************************
  * ROUNDS MODE ACTIONS AND EVENT HANDLERS
@@ -231,6 +243,19 @@ function roundsModeDeleteRound() {
 }
 
 /*************************************************************************
+ * @function roundsModeMenuLog CLICK
+ * @desc 
+ * When the "Log Round" menu item is selected, we switch to "Log Round" 
+ * page to allow the user to make a new feed post. The only option
+ * here is to log the round or cancel out of it; the user should not be
+ * able to tab to other UI sections. Thus, we disable all
+ * other UI components.
+ *************************************************************************/
+ document.getElementById("roundsModeMenuLog").addEventListener("click",function() {
+    switchToModePage("Log");
+ });
+
+/*************************************************************************
  * @function roundsModeLogBtn click handler
  * @desc 
  * When the user clicks the "Log Round" button, we call the 
@@ -241,7 +266,7 @@ document.getElementById("roundsModeLogBtn").addEventListener("click",function() 
 });
 
 /*************************************************************************
- * @function feedModePostBtn click handler
+ * @function feedModeLogCancelBtn click handler
  * @desc 
  * When the user clicks the "Cancel" button next to the "Log Round" button,
  * we go back to the main Rounds Mode page.
@@ -251,14 +276,15 @@ document.getElementById("roundsModeLogCancelBtn").addEventListener("click",funct
 });
 
 /*************************************************************************
- * @function feedModePostBtn click handler
+ * @function roundsModeActionBtn CLICK
  * @desc 
- * When the user clicks the "Cancel" button next to the "Edit Round" button,
- * we go back to the main Rounds Mode page.
+ * When the floating action button in Rounds Mode is clicked, 
+ * we switch to "Log Round" page to allow the user to log a round. 
+ * This is the "default" action in Rounds Mode
  *************************************************************************/
- document.getElementById("roundsModeEditCancelBtn").addEventListener("click",function() {
-    switchToModeMainPage();
-});
+ document.getElementById("roundsModeActionBtn").addEventListener("click",function() {
+    switchToModePage("Log");
+ });
 
 /*************************************************************************
  * COURSES MODE ACTIONS AND EVENT HANDLERS
@@ -320,6 +346,19 @@ function coursesModeEditCourse() {
 }
 
 /*************************************************************************
+ * @function coursesModeMenuAdd CLICK
+ * @desc 
+ * When the "Add Course" menu item is selected, we switch to "Add Course" 
+ * page to allow the user to create a new course. The only option
+ * here is to create the course or cancel out of it; the user should not be
+ * able to tab to other UI sections. Thus, we disable all
+ * other UI components.
+ *************************************************************************/
+ document.getElementById("coursesModeMenuAdd").addEventListener("click",function() {
+    switchToModePage("Add");
+ });
+
+/*************************************************************************
  * @function coursesModeAddBtn click handler
  * @desc 
  * When the user clicks the "Add Course" button, we call the 
@@ -327,17 +366,6 @@ function coursesModeEditCourse() {
  *************************************************************************/
 document.getElementById("coursesModeAddBtn").addEventListener("click",function() {
     coursesModeAddCourse();
-    switchToModeMainPage();
-});
-
-/*************************************************************************
- * @function coursesModeEditBtn click handler
- * @desc 
- * When the user clicks the "Edit Course" button, we call the 
- * coursesModeEdit function.
- *************************************************************************/
- document.getElementById("coursesModeEditBtn").addEventListener("click",function() {
-    coursesModeEditCourse();
     switchToModeMainPage();
 });
 
@@ -351,45 +379,60 @@ document.getElementById("coursesModeAddBtn").addEventListener("click",function()
       switchToModeMainPage();
   });
 
-  /*************************************************************************
- * @function coursesModeEditCancelBtn click handler
+ /*************************************************************************
+ * @function coursesModeActionBtn CLICK
  * @desc 
- * When the user clicks the "Cancel" button next to "Edit Course" 
- * we return to the Courses Mode main page.
+ * When the floating action button in Courses Mode is clicked, 
+ * we switch to "Add Course " page to allow the user to add a course. 
+ * This is the "default" action in Courses Mode
  *************************************************************************/
-   document.getElementById("coursesModeEditCancelBtn").addEventListener("click",function() {
-    switchToModeMainPage();
-});
-
+ document.getElementById("coursesModeActionBtn").addEventListener("click",function() {
+    switchToModePage("Add");
+ });
 
 /*************************************************************************
  * KEYBOARD HANDLERS FOR MODE ACTIONS
  * Per W3 guidelines, users must be able to cancel out of a modal dialog
  * box using the "escape" key at any point in the dialog box interaction.
  * The following functions implement both the "Enter" and the "Escape"
- * keyboard functionality for focused items on a mode subpage.
+ * keyboard functionality for focused items on a mode page.
 *************************************************************************/
+/*************************************************************************
+ * @function keyDownModeActionBtnFocused
+ * @desc 
+ * When the user hits "Enter" when a mode's floating action button is 
+ * focused, call the corresonding button's click handler,
+ * whose name can be built through cocatenating the current mode and
+ * page.
+ * When the user hits "Escape" when a mode page action button is focuses,
+ * we cancel out of the modal dialog and return to the main mode page.
+ *************************************************************************/
+ function keyDownModeActionBtnFocused(key) {
+    if (key === "Enter") {
+        document.getElementById(mode + "ActionBtn").click();
+    }
+}
 
 /*************************************************************************
  * @function keyDownModePageActionBtnFocused
  * @desc 
- * When the user hits "Enter" when a mode page action button is focused,
- * we perform the action by calling the corresonding button click handler,
+ * When the user hits "Enter" when focused on the current mode page's
+ * action button, we call the corresonding button's click handler,
  * whose name can be built through cocatenating the current mode and
- * subPage.
+ * page.
  * When the user hits "Escape" when a mode page action button is focuses,
  * we cancel out of the modal dialog and return to the main mode page.
  *************************************************************************/
 function keyDownModePageActionBtnFocused(key) {
     if (key === "Enter") {
-        document.getElementById(mode + subPage + "Btn").click();
+        document.getElementById(mode + page + "Btn").click();
     } else if (key === "Escape") { //Cancel
         switchToModeMainPage();
     }
 }
 
 /*************************************************************************
- * @function keyDownModeCancelBtnFocused
+ * @function keyDownModePageCancelBtnFocused
  * @desc 
  * When the user hits "Enter" or "Escape" when a mode page cancel button 
  * is focused, we cancel out of the modal dialog box and return to the
@@ -405,11 +448,11 @@ function keyDownModePageActionBtnFocused(key) {
  * @function keyDownModePageEltFocused
  * @desc 
  * When the user hits "Escape" while interacting with elements in
- * the modal dialog associated with the current mode's subpage, we
+ * the modal dialog associated with the current mode's page, we
  * cancel out of the modeal dialog box and return to the main page.
  *************************************************************************/
 function keyDownModePageEltFocused(key) {
-    if (key == "Escape") {
+    if (key === "Escape" && page != "main") {
         switchToModeMainPage();
     }
 }

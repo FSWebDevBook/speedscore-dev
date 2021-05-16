@@ -12,7 +12,9 @@
 *************************************************************************/
 
 let mode = "feedMode"; //The app's current mode
-let subPage = ""; //The current mode subpage, if any
+let prevMode = ""; //We use this variable to save current mode before switching to a
+                   //non-mode page like "settings" or "login"
+let page = "main"; //The current mode page. Upon login in, the app is on feedMode's main page
 let modes = ["loginMode","feedMode","roundsMode","coursesMode"];
 let focusedModeIndex = 1; //The index (into modes) of the mode tab that has the focus
 const mobileWidthThreshold = 768; //Assume a mobile device has a width of < 768 pixels  

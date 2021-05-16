@@ -50,7 +50,7 @@ function keyDownMenuBtnFocused(key) {
  *************************************************************************/
  document.getElementById("skipLink").addEventListener("click",function() {
      //TO DO: We will ultimately have to write a switch or if-then to 
-     //shift the focus to the first page element of the current mode subpage
+     //shift the focus to the first page element of the current mode page
      //For now, we just shift the focus to the tab itself.
     document.getElementById(mode + "Tab").focus();
 });

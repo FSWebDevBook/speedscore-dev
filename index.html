@@ -42,22 +42,22 @@
         role="menuitem" tabindex="0">
         Post to Feed
       </li>
-      <li id="feedModeMenuFollowOthers" class="sidemenu-item feedMode-item" role="menuitem"
+      <li id="feedModeMenuFollow" class="sidemenu-item feedMode-item" role="menuitem"
         role="menuitem" tabindex="0">
         Follow Others
       </li>
       <!--ROUNDS MODE MENU ITEMS -->
-      <li class="sidemenu-item roundsMode-item sidemenu-item-hidden"
+      <li id="roundsModeMenuLog" class="sidemenu-item roundsMode-item sidemenu-item-hidden"
         role="menuitem" tabindex="0" hidden>
         Log Round
       </li>
       <!--COURSES MODE MENU ITEMS -->
-      <li class="sidemenu-item coursesMode-item sidemenu-item-hidden" 
+      <li id="coursesModeMenuAdd" class="sidemenu-item coursesMode-item sidemenu-item-hidden" 
         role="menuitem" tabindex="0" hidden>
         Add Course
       </li>
       <!--ALWAYS AVAILABLE MENU ITEMS -->
-      <li class="sidemenu-item" 
+      <li id="menuSettings" class="sidemenu-item" 
         role="menuitem" tabindex="0">
         Settings
       </li>
@@ -86,15 +86,25 @@
         <span id="coursesSpan" class="modetab-text">Courses</span>
       </button>
     </div>
-    <!-- LOGIN MODE PAGE -->
-    <div id="loginModeTab" tabindex="0" class="mode-tab hidden">
-      <h1 class="mode-page-header">Log In Page</h1>
+    <!-- LOGIN PAGE -->
+    <div id="login" tabindex="0" class="mode-tab mode-page-elt hidden">
+      <h1 class="mode-page-header">Log In</h1>
       <p class="mode-page-content">This page is under construction.</p>
       <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
     </div>
+    <!-- SETTINGS PAGE -->
+    <div id="settings" tabindex="0" class="mode-tab mode-page-elt hidden">
+      <h1 class="mode-page-header">Settings</h1>
+      <p class="mode-page-content">This page is under construction.</p>
+      <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
+      <div class="mode-page-btn-container">
+        <button id="settingsBtn" class="mode-page-btn" type="button">Save Settings</button>
+        <button id="settingsCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
+      </div>
+    </div>
     <!-- FEED MODE PAGES -->
     <div id="feedModeTab" tabindex="0" role="tabpanel" class="mode-tab mode-page-elt" aria-label="Feed Tab">
-      <section id="feedModeMain" class="feedMode-page">
+      <section id="feedModeMain">
         <h1 class="mode-page-header">Activity Feed</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
@@ -103,28 +113,28 @@
           <span class="float-btn-icon fas fa-plus"></span>
         </button>
       </section>
-      <div id="feedModePost" class="feedMode-page hidden" role="dialog" aria-labelledby="postToFeedHeader">
+      <div id="feedModePost" class="hidden" role="dialog" aria-labelledby="postToFeedHeader">
         <h1 id="postToFeedHeader" class="mode-page-header">Post to Feed</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="feedModePostBtn" class="mode-page-btn" type="button">Post to Feed</button>
-          <button id="feedModePostCancelBtn" class="mode-page-cancel-btn" type="button">Cancel</button>
+          <button id="feedModePostCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
         </div>
       </div>  
-      <section id="feedModeFollow" tabindex="0" class="feedMode-page hidden" role="dialog">
+      <section id="feedModeFollow" tabindex="0" class="hidden" role="dialog">
         <h1 class="mode-page-header">Follow Others</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="feedModeFollowBtn" class="mode-page-btn" type="button">Follow</button>
-          <button id="feedModeFollowCancelBtn" class="mode-page-cancel-btn" type="button">Cancel</button>
+          <button id="feedModeFollowCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Back to Feed</button>
         </div>
       </section>
     </div>
     <!-- ROUNDS MODE PAGES -->
-    <div id="roundsModeTab" tabindex="0" role="tabpanel"role="tabpanel" class="mode-tab hidden" aria-label="Rounds Tab">
-      <section id="roundsModeMain" class="roundsMode-page">
+    <div id="roundsModeTab" tabindex="0" role="tabpanel"role="tabpanel" class="mode-tab mode-page-elt hidden" aria-label="Rounds Tab">
+      <section id="roundsModeMain">
         <h1 class="mode-page-header">My Rounds</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
@@ -133,19 +143,19 @@
           <span class="float-btn-icon fas fa-history"></span>
         </button>
       </section>
-      <section id="roundsModeLog" class="roundsMode-page hidden">
-        <h1 class="mode-page-header">Log New Round</h1>
+      <section id="roundsModeLog" class="hidden">
+        <h1 class="mode-page-header">Log Round</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="roundsModeLogBtn" class="mode-page-btn" type="button">Log Round</button>
-          <button id="roundsModeLogCancelBtn" class="mode-page-cancel-btn" type="button">Cancel</button>
+          <button id="roundsModeLogCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
         </div>
       </section>
     </div>
     <!-- COURSES MODE PAGES -->
-    <div id="coursesModeTab" tabindex="0" role="tabpanel" class="mode-tab hidden" aria-label="Courses Tab">
-      <section id="coursesModeMain" class="coursesMode-page">
+    <div id="coursesModeTab" tabindex="0" role="tabpanel" class="mode-tab mode-page-elt hidden" aria-label="Courses Tab">
+      <section id="coursesModeMain">
         <h1 class="mode-page-header">Courses</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
@@ -154,13 +164,13 @@
           <span class="float-btn-icon fas fa-flag"></span>
         </button>
       </section>
-      <section id="coursesModeAdd" class="coursesMode-page hidden">
+      <section id="coursesModeAdd" class="hidden">
         <h1 class="mode-page-header">Add Course</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="coursesModeAddBtn" class="mode-page-btn" type="button">Add Course</button>
-          <button id="coursesModeAddCancelBtn" class="mode-page-cancel-btn" type="button">Cancel</button>
+          <button id="coursesModeAddCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
         </div>
       </section>
     </div>
@@ -168,6 +178,7 @@
     <script src="scripts/main.js"></script>
     <script src="scripts/pageSwitch.js"></script>
     <script src="scripts/modeActions.js"></script>
+    <script src="scripts/settingsActions.js"></script>
     <script src="scripts/navbar.js"></script>
     <script src="scripts/sidemenu.js"></script>
     <script src="scripts/modeTabs.js"></script>

@@ -40,23 +40,27 @@
     } else if (element.classList.contains("modetab-btn")) {
         //Handle key press when mode tab has focus
         keyDownModeTabFocused(e.code);
+    } else if (element.id === "profileBtn" && e.code === "Enter") {
+        document.getElementById("profileBtn").click();
     } else if (element.id === mode + "ActionBtn") {
         //Handle key press when current mode's action button has focus
-        keyDownActionBtnFocused(e.code);
-    } else if (element.classList.contains("mode-page-focusable-elt")) {
-        //Handle key press when focus is on an elet in current mode's
-        //active subpage
+        keyDownModeActionBtnFocused(e.code);
+    } else if (element.id === mode + page + "Btn") {
+        //Handle key press when action button on current mode page
+        //has focus
+        keyDownModePageActionBtnFocused(e.code);
+    } else if (element.id === mode + page + "CancelBtn") {
+        //Handle key press when cancel button on current mode's page
+        //has focus
+        keyDownModePageCancelBtnFocused(e.code);
+    } else if (element.classList.contains("mode-page-elt")) {
+        //Handle key press when focus is on an elt on current mode's
+        //active page
         keyDownModePageEltFocused(e.code);
     } else if (element.id === "skipLink") {
         //Handle key press when focus is on skip link
         keyDownSkipLinkFocused(e.code);
-    } else if (element.classList.contains("mode-page-action")) {
-        //Handle key press when focus is on action button in current mode's subpage
-        keyDownModePageActionBtnFocused(e.code);
-    } else if (element.classList.contains("mode-page-cancel")) {
-        //Handle key press when focus is on cancel button in current mode's subpage
-        keyDownModePageCancelBtnFocused(e.code);
-    }
+    } 
     //We are handling the interaction here, so prevent default routing.
     e.preventDefault(); 
 
