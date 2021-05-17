@@ -119,5 +119,5 @@ function switchToModePage(thePage) {
         document.getElementById(prevMode + "Tab").style.display = "none";
     }
     document.getElementById(mode + page).style.display = "block";
-    document.getElementById(mode + (mode === "" ? page :"Tab")).focus();      
+    document.getElementById(mode + page + "Btn").focus();      
 }

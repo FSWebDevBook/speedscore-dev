@@ -87,14 +87,16 @@
       </button>
     </div>
     <!-- LOGIN PAGE -->
-    <div id="login" tabindex="0" class="mode-tab mode-page-elt hidden">
-      <h1 class="mode-page-header">Log In</h1>
+    <div id="login" class="mode-tab mode-page-elt hidden" role="dialog"
+      aria-dialog="true" aria-labelledby="loginHeader">
+      <h1 id="loginHeader" class="mode-page-header">Log In</h1>
       <p class="mode-page-content">This page is under construction.</p>
       <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
     </div>
     <!-- SETTINGS PAGE -->
-    <div id="settings" tabindex="0" class="mode-tab mode-page-elt hidden">
-      <h1 class="mode-page-header">Settings</h1>
+    <div id="settings" class="mode-tab mode-page-elt hidden" role="dialog"
+      arial-modal="true" aria-labelledby="settingsHeader">
+      <h1 id="settingsHeader" class="mode-page-header">Settings</h1>
       <p class="mode-page-content">This page is under construction.</p>
       <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
       <div class="mode-page-btn-container">
@@ -103,8 +105,9 @@
       </div>
     </div>
     <!-- FEED MODE PAGES -->
-    <div id="feedModeTab" tabindex="0" role="tabpanel" class="mode-tab mode-page-elt" aria-label="Feed Tab">
-      <section id="feedModeMain">
+    <div id="feedModeTab" role="tabpanel" class="mode-tab mode-page-elt" 
+      aria-label="Feed Tab">
+      <div id="feedModeMain">
         <h1 class="mode-page-header">Activity Feed</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
@@ -112,8 +115,9 @@
         <button id="feedModeActionBtn" class="float-btn" type="button" aria-label="Post to Feed">
           <span class="float-btn-icon fas fa-plus"></span>
         </button>
-      </section>
-      <div id="feedModePost" class="hidden" role="dialog" aria-labelledby="postToFeedHeader">
+      </div>
+      <div id="feedModePost" class="hidden" role="dialog" 
+        arial-modal="true" aria-labelledby="postToFeedHeader">
         <h1 id="postToFeedHeader" class="mode-page-header">Post to Feed</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
@@ -122,57 +126,62 @@
           <button id="feedModePostCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
         </div>
       </div>  
-      <section id="feedModeFollow" tabindex="0" class="hidden" role="dialog">
-        <h1 class="mode-page-header">Follow Others</h1>
+      <div id="feedModeFollow" class="hidden" role="dialog" 
+        aria-modal="true" aria-labelledby="followHeader">
+        <h1 id="followHeader" class="mode-page-header">Follow Others</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="feedModeFollowBtn" class="mode-page-btn" type="button">Follow</button>
           <button id="feedModeFollowCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Back to Feed</button>
         </div>
-      </section>
+      </div>
     </div>
     <!-- ROUNDS MODE PAGES -->
-    <div id="roundsModeTab" tabindex="0" role="tabpanel"role="tabpanel" class="mode-tab mode-page-elt hidden" aria-label="Rounds Tab">
-      <section id="roundsModeMain">
+    <div id="roundsModeTab" role="tabpanel"role="tabpanel" class="mode-tab mode-page-elt hidden" 
+      aria-label="Rounds Tab">
+      <div id="roundsModeMain">
         <h1 class="mode-page-header">My Rounds</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <!--ADD COURSE ACTION BUTTON-->
         <button id="roundsModeActionBtn" class="float-btn hidden" type="button" aria-label="Log Round">
-          <span class="float-btn-icon fas fa-history"></span>
+          <span class="float-btn-icon fas fa-plus"></span>
         </button>
-      </section>
-      <section id="roundsModeLog" class="hidden">
-        <h1 class="mode-page-header">Log Round</h1>
+      </div>
+      <div id="roundsModeLog" class="hidden" role="dialog" 
+        aria-modal="true" aria-labelledby="logHeader">
+        <h1 id="logHeader" class="mode-page-header">Log Round</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="roundsModeLogBtn" class="mode-page-btn" type="button">Log Round</button>
           <button id="roundsModeLogCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
         </div>
-      </section>
+      </div>
     </div>
     <!-- COURSES MODE PAGES -->
-    <div id="coursesModeTab" tabindex="0" role="tabpanel" class="mode-tab mode-page-elt hidden" aria-label="Courses Tab">
-      <section id="coursesModeMain">
+    <div id="coursesModeTab" role="tabpanel" class="mode-tab mode-page-elt hidden" 
+      aria-label="Courses Tab">
+      <div id="coursesModeMain">
         <h1 class="mode-page-header">Courses</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <!--ADD COURSE ACTION BUTTON-->
         <button id="coursesModeActionBtn" class="float-btn hidden" type="button" aria-label="Add Course">
-          <span class="float-btn-icon fas fa-flag"></span>
+          <span class="float-btn-icon fas fa-plus"></span>
         </button>
-      </section>
-      <section id="coursesModeAdd" class="hidden">
-        <h1 class="mode-page-header">Add Course</h1>
+      </div>
+      <div id="coursesModeAdd" class="hidden" role="dialog"
+        aria-modal="true" aria-labelledby="addHeader">
+        <h1 id="addHeader" class="mode-page-header">Add Course</h1>
         <p class="mode-page-content">This page is under construction.</p>
         <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
         <div class="mode-page-btn-container">
           <button id="coursesModeAddBtn" class="mode-page-btn" type="button">Add Course</button>
           <button id="coursesModeAddCancelBtn" class="mode-page-btn mode-page-cancel-btn" type="button">Cancel</button>
         </div>
-      </section>
+      </div>
     </div>
     </main>  
     <script src="scripts/main.js"></script>
