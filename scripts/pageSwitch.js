@@ -70,15 +70,16 @@ function switchToModeMainPage() {
  * concatenation: mode + page
  *************************************************************************/
 function switchToModePage(thePage) {
+    page = thePage;
     const menuBtnIcon = document.getElementById("menuBtnIcon");
     const menuBtn = document.getElementById("menuBtn");
     if (menuBtnIcon.classList.contains("fa-times")) {
         //Menu is open; close it before switching to new page.
         toggleSideMenu();
     }
-    page = thePage; 
+     
     if (page === "login" || page === "settings") {
-        //We are not switchting to a page associated with a particular mode
+        //We are  switching to a page not associated with a particular mode
         //Save current mode and temporarily set mode to empty
         //This allows non-mode pages to be processed as through they are 
         //mode pages.
@@ -118,6 +119,8 @@ function switchToModePage(thePage) {
     if (mode === "") { //Need to hide mode tab completely
         document.getElementById(prevMode + "Tab").style.display = "none";
     }
-    document.getElementById(mode + page).style.display = "block";
-    document.getElementById(mode + page + "Btn").focus();      
+    //Show new page, place it in tab order, and place focus on it
+    const newModePage = document.getElementById(mode + page);
+    newModePage.style.display = "block";
+    newModePage.focus();      
 }

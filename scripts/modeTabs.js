@@ -11,16 +11,16 @@
  * @function switchMode 
  * @desc 
  * Switch from the current mode to a new mode. This entails unhighlighting
- * the bottom bar btn corresponding to the current mode, highlighting 
- * the bottom bar btn corresponding to the new mode, updating the global
+ * the mode tab corresponding to the current mode, highlighting 
+ * the mode tab corresponding to the new mode, updating the global
  * mode variable, and changing the menu items to reflect the new mode.
  * @param newMode
  * The string corresponding to the new mode (feedMode, roundsMode, 
  * coursesMode, loginMode)
  *************************************************************************/
  function switchMode(newMode) {
-    let prevModeBtn = document.getElementById(mode);
-    let newModeBtn = document.getElementById(newMode);
+    const prevModeBtn = document.getElementById(mode);
+    const newModeBtn = document.getElementById(newMode);
     //Switch mode button that is highlighted
     prevModeBtn.classList.remove("modetab-selected");
     prevModeBtn.classList.add("modetab-unselected");
@@ -28,6 +28,10 @@
     newModeBtn.classList.remove("modetab-unselected");
     newModeBtn.classList.add("modetab-selected");
     newModeBtn.setAttribute("aria-selected",true);
+    //Place "Main" <div> of new mode in natural tab sequence
+    document.getElementById(mode + "Main").setAttribute("tabindex","-1");
+    document.getElementById(newMode + "Main").setAttribute("tabindex","0");
+    //Place focus on new mode button    
     newModeBtn.focus();
     //Change action button
     document.getElementById(mode + "ActionBtn").style.display = "none";

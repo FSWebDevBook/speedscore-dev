@@ -68,10 +68,11 @@ function feedModeDisplayFollowUsersForm() {
  * It adds the selected users to the list of users being followed, and
  * integrates the followed users' recent posts and rounds into the feed.
  * Since the user may want to add multiple users to their "followed" 
- * list, we stay in this mod after each operation.
+ * list, we will ultimately stay on this page after each operation.
  *************************************************************************/
 function feedModeFollowUsers() {
     //TO DO: Add code to follow selected user(s);
+    switchToModeMainPage();
 } 
 
 /*************************************************************************

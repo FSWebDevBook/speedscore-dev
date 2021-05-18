@@ -52,7 +52,8 @@ function keyDownMenuBtnFocused(key) {
      //TO DO: We will ultimately have to write a switch or if-then to 
      //shift the focus to the first page element of the current mode page
      //For now, we just shift the focus to the tab itself.
-    document.getElementById(mode + "ActionBtn").focus();
+    const main = document.getElementById(mode + "Main");
+    main.focus();
 });
 
 /*************************************************************************
