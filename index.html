@@ -40,34 +40,34 @@
       <!--FEED MODE MENU ITEMS-->
       <li id="feedModeMenuPost" class="sidemenu-item feedMode-item" 
         role="menuitem" tabindex="0">
-        Post to Feed
+        <span class="fas fa-plus sidemenu-icon-pad"></span>Post to Feed
       </li>
       <li id="feedModeMenuFollow" class="sidemenu-item feedMode-item" role="menuitem"
         role="menuitem" tabindex="0">
-        Follow Others
+        <span class="fas fa-users sidemenu-icon-pad"></span>Follow Others
       </li>
       <!--ROUNDS MODE MENU ITEMS -->
       <li id="roundsModeMenuLog" class="sidemenu-item roundsMode-item sidemenu-item-hidden"
         role="menuitem" tabindex="0" hidden>
-        Log Round
+        <span class="fas fa-pen sidemenu-icon-pad"></span>Log Round
       </li>
       <!--COURSES MODE MENU ITEMS -->
       <li id="coursesModeMenuAdd" class="sidemenu-item coursesMode-item sidemenu-item-hidden" 
         role="menuitem" tabindex="0" hidden>
-        Add Course
+        <span class="fas fa-plus sidemenu-icon-pad"></span>Add Course
       </li>
       <!--ALWAYS AVAILABLE MENU ITEMS -->
       <li id="menuSettings" class="sidemenu-item" 
         role="menuitem" tabindex="0">
-        Settings
+        <span class="fas fa-user-edit sidemenu-icon-pad"></span>Profile Settings
       </li>
       <li class="sidemenu-item" 
         role="menuitem" tabindex="0">
-        About
+        <span class="fas fa-info-circle sidemenu-icon-pad"></span>About
       </li>
       <li class="sidemenu-item" 
         role="menuitem" tabindex="0">
-        Log Out
+        <span class="fas fa-sign-out-alt sidemenu-icon-pad"></span>Log Out
       </li>
     </ul>
     <main>
@@ -85,6 +85,10 @@
         role="tab" tabindex="-1" aria-selected="false" aria-controls="coursesModeMain">
         <span id="coursesSpan" class="modetab-text">Courses</span>
       </button>
+      <button id="buddiesMode" type="button" class="modetab-btn modetab-unselected" 
+        role="tab" tabindex="-1" aria-selected="false" aria-controls="buddiesModeMain">
+        <span id="buddiesSpan" class="modetab-text">Buddies</span>
+      </button>
     </div>
     <!-- LOGIN PAGE -->
     <div id="login" class="mode-tab mode-page-elt hidden" role="dialog"
@@ -96,7 +100,7 @@
     <!-- SETTINGS PAGE -->
     <div id="settings" class="mode-tab mode-page-elt hidden" role="dialog"
       arial-modal="true" aria-labelledby="settingsHeader" tabindex="0">
-      <h1 id="settingsHeader" class="mode-page-header">Settings</h1>
+      <h1 id="settingsHeader" class="mode-page-header">Profile Settings</h1>
       <p class="mode-page-content">This page is under construction.</p>
       <img class="mode-page-icon" src="images/sslogo2.png" alt="SpeedScore logo">
       <div class="mode-page-btn-container">

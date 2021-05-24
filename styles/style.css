@@ -188,9 +188,6 @@
 .sidemenu-item {
     padding: 24px 0px 24px 24px; /* top, right, bottom, left */
     font-size: 18px;
-    /* display: flex;
-    box-sizing: content-box;
-    padding: 0px; */
 }
 
 .sidemenu-item:focus, .sidemenu-item:hover {
@@ -198,6 +195,10 @@
     background-color: var(--item-highlight-color);
     color: var(--main-color);
 }  
+
+.sidemenu-icon-pad {
+    padding-right: 1em;
+}
 
 
 /* sidemenu-profile-pic -- Styling for user profile pic in side menu */
