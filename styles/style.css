@@ -90,29 +90,30 @@
     z-index: 100; /* Force it to be on top */
 }
 
-/* navbar-right-items styles items within navbar that should be right-justified.
+/* navbar-right-item styles items within navbar that should be right-justified.
 */
 .navbar-right-items {
+   display: flex;
    margin-left: auto;
+   align-items: center;
   }
 
-/* navbar-btn styles the side menu button in the navbar. Its background 
+/* navbar-btn styles the buttons in the navbar. Its background 
    needs to be transparent so that it looks like it's part of the 
    navbar. Its border color needs to be --main-color so it blends in to
    the navbar.
 */
 .navbar-btn {
    background-color: transparent;
-   border: none;        
-   text-align: center;
+   border: none;      
 }
 
-/* navbar-btn-icon styles the navbar button icon. It should be white, in a large
+/* navbar-btn-icon styles button icons in the navbar. It should be white, in a large
    font, centered within the button, and the cursor should change to a pointer 
    when over it. 
 */
 .navbar-btn-icon {
-   color: var(--text-color);
+    color: var(--text-color);
     font-size: 36px;
     cursor: pointer;
 }
